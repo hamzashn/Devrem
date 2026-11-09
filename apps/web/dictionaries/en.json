@@ -7,14 +7,14 @@
     "features": "Features",
     "docs": "Docs",
     "changelog": "Changelog",
-    "download": "Download"
+    "download": "Install"
   },
   "hero": {
     "badge": "Free · No account needed · Windows 10/11",
     "title": "Draw your circuit, run it,",
     "titleAccent": "watch the current flow.",
     "subtitle": "Devrem is a fast, modern electronic circuit simulator written in Rust that simulates analog and digital circuits in real time.",
-    "primary": "Download for Free",
+    "primary": "Installation Guide",
     "secondary": "What can it do?"
   },
   "features": {
@@ -94,25 +94,47 @@
   },
   "cta": {
     "title": "Build your first circuit in minutes",
-    "text": "Devrem is free and needs no account. Download it, open a circuit from the example gallery and press F5.",
-    "button": "Download Devrem"
+    "text": "Devrem is free and needs no account. Build it from source, open a circuit from the example gallery and press F5.",
+    "button": "Installation Guide"
   },
   "download": {
-    "title": "Download Devrem",
+    "title": "Install Devrem",
     "subtitle": "Version {{version}} · Windows 10 / 11 (64-bit)",
-    "installer": "Installer (.exe)",
-    "msi": "Enterprise installer (.msi)",
-    "allReleases": "All releases",
+    "notice": "No prebuilt installer is published at the moment. You install Devrem by building it from source yourself. The first setup takes about 20–30 minutes.",
+    "toolsTitle": "1. Install the required tools (once)",
+    "tools": [
+      [
+        "Git",
+        "git-scm.com/download/win",
+        "https://git-scm.com/download/win",
+        "Install with the default options."
+      ],
+      [
+        "Visual Studio Build Tools",
+        "visualstudio.microsoft.com/visual-cpp-build-tools",
+        "https://visualstudio.microsoft.com/visual-cpp-build-tools/",
+        "Select the \"Desktop development with C++\" workload."
+      ],
+      [
+        "Rust",
+        "rustup.rs",
+        "https://rustup.rs/",
+        "Run rustup-init.exe and choose the default installation (1)."
+      ],
+      ["Node.js", "nodejs.org", "https://nodejs.org/", "Download the LTS version (20 or later)."],
+      ["pnpm", "npm install -g pnpm", "", "Run it in a new terminal after installing Node.js."]
+    ],
+    "cloneTitle": "2. Get the source code",
+    "runTitle": "3. Run it or build an installer",
+    "runText": "\"pnpm dev\" opens the app right away. \"pnpm build\" creates an installer: target\\release\\bundle\\nsis\\Devrem_{{version}}_x64-setup.exe — double-click it to install.",
+    "guide": "Detailed guide and troubleshooting",
+    "source": "Source code on GitHub",
     "requirementsTitle": "System requirements",
     "requirements": [
       "Windows 10 (1809 or later) or Windows 11, 64-bit",
-      "Microsoft Edge WebView2 (preinstalled on Windows 11; the installer fetches it if needed)",
-      "4 GB RAM, ~50 MB disk space"
-    ],
-    "smartscreenTitle": "\"Windows protected your PC\" warning",
-    "smartscreen": "Devrem is not yet signed with a code-signing certificate, so Windows SmartScreen may warn on first install. Choose \"More info\" → \"Run anyway\" to continue.",
-    "updatesTitle": "Automatic updates",
-    "updates": "When a new version is released, Devrem tells you on startup and updates in one click."
+      "Microsoft Edge WebView2 (preinstalled on Windows 11)",
+      "5–10 GB of free disk space for the build"
+    ]
   },
   "docs": {
     "title": "Documentation",

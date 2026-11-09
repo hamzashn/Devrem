@@ -17,10 +17,10 @@ Devreni çiz, çalıştır, akımın aktığını gör.
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Dil](https://img.shields.io/badge/Aray%C3%BCz-T%C3%BCrk%C3%A7e%20%7C%20English-F5A524?style=flat-square)
 
-[**📥 İndir**](../../releases/latest) ·
+[**💻 Kurulum**](#-kurulum) ·
 [Özellikler](#-öne-çıkanlar) ·
 [Hızlı Başlangıç](#-hızlı-başlangıç) ·
-[Kaynaktan Derleme](#-kaynaktan-derleme) ·
+[Geliştirme](#-geliştirme) ·
 [Mimari](docs/ARCHITECTURE.md) ·
 [Katkıda Bulun](#-katkıda-bulunma)
 
@@ -57,7 +57,7 @@ biçimlerini çizer.
 - ⚡ **Gerçek zamanlı** — simülasyon çalışırken anahtarlara tıkla, potansiyometreyi kaydır; devrenin durumu korunur.
 - 🧠 **Doğrulanmış motor** — MNA tabanlı çözücü, analitik sonuçlarla karşılaştıran 81 testle sınanıyor.
 - 🔀 **Analog ve dijital bir arada** — transistörler, op-amp ve 555 ile lojik kapılar ve flip-flop'lar aynı devrede çalışır.
-- 🪶 **Hafif** — ~4 MB kurulum dosyası, çevrimdışı çalışır.
+- 🪶 **Hafif** — ~4 MB'lık kurulum dosyası üretir, tamamen çevrimdışı çalışır.
 
 ---
 
@@ -140,22 +140,103 @@ biçimlerini çizer.
 
 ---
 
-## 📥 İndirme
+## 💻 Kurulum
 
-En son sürümü [**Releases**](../../releases/latest) sayfasından indir:
+> [!IMPORTANT]
+> Şu an hazır bir kurulum dosyası (`.exe`) yayımlanmıyor. Devrem'i kaynak
+> koddan **kendin derleyerek** kurarsın. Aşağıdaki adımlar hiç programlama
+> bilmeyen biri için de yazıldı. İlk kurulum, indirmeler ve ilk derleme dahil
+> yaklaşık **20–30 dakika** sürer.
 
-| Dosya                        | Açıklama                      |
-| ---------------------------- | ----------------------------- |
-| `Devrem_x.y.z_x64-setup.exe` | Önerilen kurulum dosyası      |
-| `Devrem_x.y.z_x64_en-US.msi` | Kurumsal / toplu kurulum için |
+### 1. Gerekli araçları kur _(yalnızca bir kez)_
 
-**Gereksinimler:** Windows 10 (1809+) veya Windows 11, 64 bit. Microsoft Edge
-WebView2 gerekir; Windows 11'de yüklü gelir, gerekirse kurulum dosyası indirir.
+| #   | Araç                          | Nereden                                                                                                                      | Dikkat                                                                                           |
+| --- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| 1   | **Git**                       | [git-scm.com/download/win](https://git-scm.com/download/win)                                                                 | Varsayılan seçeneklerle kur                                                                      |
+| 2   | **Visual Studio Build Tools** | [visualstudio.microsoft.com/visual-cpp-build-tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)              | Kurulumda **"C++ ile masaüstü geliştirme"** (_Desktop development with C++_) seçeneğini işaretle |
+| 3   | **Rust**                      | [rustup.rs](https://rustup.rs/) → `rustup-init.exe`                                                                          | Açılan pencerede `1` (varsayılan kurulum) seç                                                    |
+| 4   | **Node.js**                   | [nodejs.org](https://nodejs.org/) → **LTS** sürümü                                                                           | Sürüm 20 veya üstü                                                                               |
+| 5   | **WebView2**                  | Windows 11'de zaten yüklü. Windows 10'da: [Evergreen Bootstrapper](https://developer.microsoft.com/microsoft-edge/webview2/) | Çoğu Windows 10'da da yüklüdür                                                                   |
 
-> [!NOTE]
-> Kurulum dosyası henüz bir kod imzalama sertifikasıyla imzalanmadığı için
-> Windows SmartScreen ilk kurulumda "Windows bilgisayarınızı korudu" uyarısı
-> gösterebilir. **Ek bilgi → Yine de çalıştır** ile devam edebilirsin.
+Ardından **yeni bir terminal** aç (Başlat → "PowerShell") ve pnpm'i kur:
+
+```powershell
+npm install -g pnpm
+```
+
+Her şeyin kurulduğunu kontrol et; her komut bir sürüm numarası yazmalı:
+
+```powershell
+git --version
+rustc --version
+node --version
+pnpm --version
+```
+
+### 2. Kaynak kodu indir
+
+```powershell
+git clone https://github.com/hamzashn/Devrem.git
+cd Devrem
+pnpm install
+```
+
+> [!TIP]
+> Git kullanmak istemezsen GitHub'da **Code → Download ZIP** ile indirip
+> klasöre çıkar, sonra o klasörde terminal açıp `pnpm install` çalıştır.
+
+### 3. Çalıştır veya kurulum dosyası oluştur
+
+**Hemen denemek için:**
+
+```powershell
+pnpm dev
+```
+
+İlk seferde Rust kodu derlendiği için pencerenin açılması birkaç dakika sürer;
+sonraki açılışlar hızlıdır.
+
+**Kalıcı olarak kurmak için:**
+
+```powershell
+pnpm build
+```
+
+Derleme bitince (ilk seferde 5–15 dakika) şu dosyalar oluşur:
+
+| Dosya                                                   | Ne işe yarar                                                     |
+| ------------------------------------------------------- | ---------------------------------------------------------------- |
+| `target\release\bundle\nsis\Devrem_0.1.0_x64-setup.exe` | **Kurulum dosyası** — çift tıkla, Devrem Başlat menüsüne eklenir |
+| `target\release\bundle\msi\Devrem_0.1.0_x64_en-US.msi`  | Aynı uygulamanın MSI kurulum paketi                              |
+| `target\release\devrem-desktop.exe`                     | Kurulum gerektirmeden doğrudan çalışan program                   |
+
+### Güncelleme
+
+Yeni değişiklikleri almak için proje klasöründe:
+
+```powershell
+git pull
+pnpm install
+pnpm build
+```
+
+Sonra yeni kurulum dosyasını çalıştırman yeterli; eski sürümün üzerine kurulur.
+
+<details>
+<summary><b>Sorun giderme</b></summary>
+
+| Hata / belirti                                   | Çözüm                                                                                                     |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| `linker 'link.exe' not found`                    | Build Tools'ta C++ seçeneği eksik. **Visual Studio Installer → Değiştir** ile ekle, terminali yeniden aç. |
+| `'pnpm' is not recognized` / `rustc` bulunamıyor | Araçları kurduktan sonra terminali kapatıp yeniden aç.                                                    |
+| İlk derleme çok uzun sürüyor                     | Normal; yüzlerce Rust paketi bir kez derlenir. Sonraki derlemeler çok daha hızlıdır.                      |
+| Pencere açılmıyor veya boş görünüyor             | WebView2'yi yükle (1. adımdaki 5. araç).                                                                  |
+| Derleme çok yavaş / antivirüs uyarısı            | Proje klasörünü antivirüs taramasının dışında bırakmak derlemeyi hızlandırır.                             |
+| Disk alanı yetmiyor                              | Rust derleme dosyaları (`target` klasörü) için **5–10 GB** boş alan gerekir.                              |
+
+Çözemediğin bir sorun olursa hata mesajıyla birlikte bir [issue](../../issues) aç.
+
+</details>
 
 ---
 
@@ -257,22 +338,13 @@ WebView2 gerekir; Windows 11'de yüklü gelir, gerekirse kurulum dosyası indiri
 
 ---
 
-## 🛠 Kaynaktan Derleme
+## 🧑‍💻 Geliştirme
 
-### Gereksinimler
-
-- [Rust](https://rustup.rs/) (stable)
-- [Node.js](https://nodejs.org/) 20+ ve [pnpm](https://pnpm.io/)
-- Windows için: Microsoft C++ Build Tools ve WebView2 Runtime
-  ([Tauri ön koşulları](https://v2.tauri.app/start/prerequisites/))
-
-### Komutlar
+Katkıda bulunmak veya kodu değiştirmek için [Kurulum](#-kurulum) bölümündeki
+araçlar yeterlidir.
 
 ```bash
-# Bağımlılıkları yükle
-pnpm install
-
-# Masaüstü uygulamayı geliştirme modunda çalıştır
+# Uygulamayı geliştirme modunda çalıştır (değişiklikler anında yansır)
 pnpm dev
 
 # Testler ve kontroller
@@ -280,7 +352,7 @@ cargo test --workspace
 cargo clippy --workspace --all-targets -- -D warnings
 pnpm typecheck && pnpm lint && pnpm format:check
 
-# Kurulum paketi (NSIS + MSI) — imza anahtarı için docs/release.md
+# Kurulum paketi (NSIS + MSI)
 pnpm build
 
 # Web sitesi (http://localhost:3000)
@@ -347,7 +419,7 @@ Ayrıntılar: [**docs/ARCHITECTURE.md**](docs/ARCHITECTURE.md)
 - [x] Transistörler, op-amp, 555, lojik kapılar, flip-flop'lar, 7 segment
 - [x] SPICE / PNG / SVG / CSV dışa aktarımı, örnek galerisi
 - [x] Kurulum paketi ve otomatik güncelleme altyapısı
-- [ ] İlk sürümün yayımlanması
+- [ ] Hazır kurulum dosyası (sürüm) yayımlama
 - [ ] Yeni bileşenler: transformatör, kontrollü kaynaklar, röle, kaydırmalı yazmaç
 - [ ] Büyük devreler için seyrek (sparse) çözücü
 - [ ] Kopyala / yapıştır, alt devreler

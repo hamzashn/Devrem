@@ -36,6 +36,9 @@ jobs:
         with:
           projectPath: apps/desktop
           tauriScript: pnpm tauri
+          # Güncelleme dosyaları (.sig) yalnızca resmi sürümde üretilir; yerel
+          # derlemeler imza anahtarı gerektirmez.
+          args: '--config {"bundle":{"createUpdaterArtifacts":true}}'
           tagName: ${{ github.ref_name }}
           releaseName: Devrem ${{ github.ref_name }}
           releaseBody: Değişiklikler için CHANGELOG.md dosyasına bakın.

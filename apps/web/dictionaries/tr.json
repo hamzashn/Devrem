@@ -7,14 +7,14 @@
     "features": "Özellikler",
     "docs": "Belgeler",
     "changelog": "Değişiklikler",
-    "download": "İndir"
+    "download": "Kurulum"
   },
   "hero": {
     "badge": "Ücretsiz · Hesap gerekmez · Windows 10/11",
     "title": "Devreni çiz, çalıştır,",
     "titleAccent": "akımın aktığını gör.",
     "subtitle": "Devrem; analog ve dijital devreleri gerçek zamanlı simüle eden, Rust ile yazılmış hızlı ve modern bir elektronik devre simülatörüdür.",
-    "primary": "Ücretsiz İndir",
+    "primary": "Kurulum Rehberi",
     "secondary": "Neler yapabilir?"
   },
   "features": {
@@ -94,25 +94,47 @@
   },
   "cta": {
     "title": "İlk devreni dakikalar içinde kur",
-    "text": "Devrem ücretsizdir ve hesap gerektirmez. İndir, örnek galerisinden bir devre aç ve F5'e bas.",
-    "button": "Devrem'i İndir"
+    "text": "Devrem ücretsizdir ve hesap gerektirmez. Kaynaktan derle, örnek galerisinden bir devre aç ve F5'e bas.",
+    "button": "Kurulum Rehberi"
   },
   "download": {
-    "title": "Devrem'i indir",
+    "title": "Devrem'i kur",
     "subtitle": "Sürüm {{version}} · Windows 10 / 11 (64 bit)",
-    "installer": "Kurulum dosyası (.exe)",
-    "msi": "Kurumsal kurulum (.msi)",
-    "allReleases": "Tüm sürümler",
+    "notice": "Şu an hazır bir kurulum dosyası yayımlanmıyor. Devrem'i kaynak koddan kendin derleyerek kurarsın. İlk kurulum yaklaşık 20–30 dakika sürer.",
+    "toolsTitle": "1. Gerekli araçları kur (bir kez)",
+    "tools": [
+      [
+        "Git",
+        "git-scm.com/download/win",
+        "https://git-scm.com/download/win",
+        "Varsayılan seçeneklerle kur."
+      ],
+      [
+        "Visual Studio Build Tools",
+        "visualstudio.microsoft.com/visual-cpp-build-tools",
+        "https://visualstudio.microsoft.com/visual-cpp-build-tools/",
+        "Kurulumda \"C++ ile masaüstü geliştirme\" seçeneğini işaretle."
+      ],
+      [
+        "Rust",
+        "rustup.rs",
+        "https://rustup.rs/",
+        "rustup-init.exe'yi çalıştır, varsayılan kurulumu (1) seç."
+      ],
+      ["Node.js", "nodejs.org", "https://nodejs.org/", "LTS sürümünü indir (20 veya üstü)."],
+      ["pnpm", "npm install -g pnpm", "", "Node.js kurulduktan sonra yeni bir terminalde çalıştır."]
+    ],
+    "cloneTitle": "2. Kaynak kodu indir",
+    "runTitle": "3. Çalıştır veya kurulum dosyası oluştur",
+    "runText": "\"pnpm dev\" uygulamayı hemen açar. \"pnpm build\" ise bir kurulum dosyası üretir: target\\release\\bundle\\nsis\\Devrem_{{version}}_x64-setup.exe — çift tıklayarak kur.",
+    "guide": "Ayrıntılı rehber ve sorun giderme",
+    "source": "GitHub'da kaynak kod",
     "requirementsTitle": "Sistem gereksinimleri",
     "requirements": [
       "Windows 10 (1809 ve sonrası) veya Windows 11, 64 bit",
-      "Microsoft Edge WebView2 (Windows 11'de yüklü gelir; gerekirse kurulum indirir)",
-      "4 GB RAM, ~50 MB disk alanı"
-    ],
-    "smartscreenTitle": "\"Windows bilgisayarınızı korudu\" uyarısı",
-    "smartscreen": "Devrem henüz kod imzalama sertifikasıyla imzalanmadığı için Windows SmartScreen ilk kurulumda uyarı gösterebilir. \"Ek bilgi\" → \"Yine de çalıştır\" ile devam edebilirsiniz.",
-    "updatesTitle": "Otomatik güncelleme",
-    "updates": "Yeni bir sürüm çıktığında Devrem bunu açılışta bildirir; tek tıkla güncellenir."
+      "Microsoft Edge WebView2 (Windows 11'de yüklü gelir)",
+      "Derleme için 5–10 GB boş disk alanı"
+    ]
   },
   "docs": {
     "title": "Belgeler",

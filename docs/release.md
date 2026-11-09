@@ -48,13 +48,14 @@ durum çubuğunda "Güncelle ve yeniden başlat" düğmesi gösterir.
 ## Yerelde kurulum paketi üretmek
 
 ```bash
-# Git Bash
-export TAURI_SIGNING_PRIVATE_KEY="$(cat ~/.tauri/devrem.key)"
-export TAURI_SIGNING_PRIVATE_KEY_PASSWORD=""
 pnpm build
 ```
 
-Çıktılar: `target/release/bundle/nsis/` ve `target/release/bundle/msi/`.
+Çıktılar: `target/release/bundle/nsis/` ve `target/release/bundle/msi/`. Yerel
+derleme **imza anahtarı gerektirmez**: güncelleme imzaları (`.sig`) yalnızca
+sürüm iş akışında, `--config {"bundle":{"createUpdaterArtifacts":true}}` ile
+üretilir. Kaynaktan derleyen kullanıcılar için adımlar README'nin
+"Kurulum" bölümündedir.
 
 ## Windows kod imzalama (sertifika alındığında)
 

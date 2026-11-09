@@ -17,10 +17,10 @@ Draw your circuit, run it, watch the current flow.
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Language](https://img.shields.io/badge/UI-English%20%7C%20T%C3%BCrk%C3%A7e-F5A524?style=flat-square)
 
-[**📥 Download**](../../releases/latest) ·
+[**💻 Installation**](#-installation) ·
 [Features](#-highlights) ·
 [Quick Start](#-quick-start) ·
-[Build from Source](#-build-from-source) ·
+[Development](#-development) ·
 [Architecture](docs/ARCHITECTURE.md) ·
 [Contribute](#-contributing)
 
@@ -56,7 +56,7 @@ current flows as moving dots, LEDs glow and the oscilloscope draws the waveforms
 - ⚡ **Real time** — click switches and drag potentiometers while it runs; the circuit state is kept.
 - 🧠 **A verified engine** — an MNA-based solver checked by 81 tests against analytic results.
 - 🔀 **Analog and digital together** — transistors, op-amps and the 555 work alongside logic gates and flip-flops in one circuit.
-- 🪶 **Lightweight** — a ~4 MB installer that works offline.
+- 🪶 **Lightweight** — builds a ~4 MB installer and works fully offline.
 
 ---
 
@@ -141,23 +141,103 @@ current flows as moving dots, LEDs glow and the oscilloscope draws the waveforms
 
 ---
 
-## 📥 Download
+## 💻 Installation
 
-Get the latest version from the [**Releases**](../../releases/latest) page:
+> [!IMPORTANT]
+> No prebuilt installer (`.exe`) is published at the moment. You install
+> Devrem by **building it from source** yourself. The steps below are written
+> for someone with no programming experience. The first setup takes about
+> **20–30 minutes**, including downloads and the first build.
 
-| File                         | Description                    |
-| ---------------------------- | ------------------------------ |
-| `Devrem_x.y.z_x64-setup.exe` | Recommended installer          |
-| `Devrem_x.y.z_x64_en-US.msi` | For enterprise / bulk installs |
+### 1. Install the required tools _(once)_
 
-**Requirements:** Windows 10 (1809+) or Windows 11, 64-bit. Microsoft Edge
-WebView2 is required; it ships with Windows 11 and the installer fetches it if
-needed.
+| #   | Tool                          | Where                                                                                                                         | Note                                                                       |
+| --- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 1   | **Git**                       | [git-scm.com/download/win](https://git-scm.com/download/win)                                                                  | Install with the default options                                           |
+| 2   | **Visual Studio Build Tools** | [visualstudio.microsoft.com/visual-cpp-build-tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)               | Select the **"Desktop development with C++"** workload during installation |
+| 3   | **Rust**                      | [rustup.rs](https://rustup.rs/) → `rustup-init.exe`                                                                           | Choose `1` (default installation) in the window that opens                 |
+| 4   | **Node.js**                   | [nodejs.org](https://nodejs.org/) → the **LTS** version                                                                       | Version 20 or later                                                        |
+| 5   | **WebView2**                  | Preinstalled on Windows 11. On Windows 10: [Evergreen Bootstrapper](https://developer.microsoft.com/microsoft-edge/webview2/) | Already present on most Windows 10 systems                                 |
 
-> [!NOTE]
-> The installer is not yet signed with a code-signing certificate, so Windows
-> SmartScreen may show "Windows protected your PC" on first install. Choose
-> **More info → Run anyway** to continue.
+Then open a **new terminal** (Start → "PowerShell") and install pnpm:
+
+```powershell
+npm install -g pnpm
+```
+
+Check that everything is installed; each command should print a version number:
+
+```powershell
+git --version
+rustc --version
+node --version
+pnpm --version
+```
+
+### 2. Get the source code
+
+```powershell
+git clone https://github.com/hamzashn/Devrem.git
+cd Devrem
+pnpm install
+```
+
+> [!TIP]
+> If you'd rather not use Git, choose **Code → Download ZIP** on GitHub,
+> extract it, open a terminal in that folder and run `pnpm install`.
+
+### 3. Run it or build an installer
+
+**To try it right away:**
+
+```powershell
+pnpm dev
+```
+
+The first launch takes a few minutes because the Rust code is compiled; later
+launches are fast.
+
+**To install it permanently:**
+
+```powershell
+pnpm build
+```
+
+When the build finishes (5–15 minutes the first time), these files are created:
+
+| File                                                    | Purpose                                                            |
+| ------------------------------------------------------- | ------------------------------------------------------------------ |
+| `target\release\bundle\nsis\Devrem_0.1.0_x64-setup.exe` | **Installer** — double-click it; Devrem is added to the Start menu |
+| `target\release\bundle\msi\Devrem_0.1.0_x64_en-US.msi`  | An MSI package of the same app                                     |
+| `target\release\devrem-desktop.exe`                     | The program itself, runs without installing                        |
+
+### Updating
+
+To get the latest changes, run this in the project folder:
+
+```powershell
+git pull
+pnpm install
+pnpm build
+```
+
+Then run the new installer; it installs over the previous version.
+
+<details>
+<summary><b>Troubleshooting</b></summary>
+
+| Error / symptom                                | Fix                                                                                                     |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `linker 'link.exe' not found`                  | The C++ workload is missing. Add it via **Visual Studio Installer → Modify**, then reopen the terminal. |
+| `'pnpm' is not recognized` / `rustc` not found | Close and reopen the terminal after installing the tools.                                               |
+| The first build takes a long time              | Normal; hundreds of Rust crates are compiled once. Later builds are much faster.                        |
+| The window doesn't open or is blank            | Install WebView2 (tool 5 in step 1).                                                                    |
+| Very slow build / antivirus warning            | Excluding the project folder from antivirus scanning speeds up builds.                                  |
+| Not enough disk space                          | Rust build files (the `target` folder) need **5–10 GB** of free space.                                  |
+
+If you're stuck, open an [issue](../../issues) with the error message.
+
+</details>
 
 ---
 
@@ -259,22 +339,13 @@ In the [`examples/`](examples/) folder and the in-app gallery:
 
 ---
 
-## 🛠 Build from Source
+## 🧑‍💻 Development
 
-### Requirements
-
-- [Rust](https://rustup.rs/) (stable)
-- [Node.js](https://nodejs.org/) 20+ and [pnpm](https://pnpm.io/)
-- On Windows: Microsoft C++ Build Tools and the WebView2 Runtime
-  ([Tauri prerequisites](https://v2.tauri.app/start/prerequisites/))
-
-### Commands
+The tools from the [Installation](#-installation) section are all you need to
+contribute or change the code.
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Run the desktop app in development mode
+# Run the app in development mode (changes apply instantly)
 pnpm dev
 
 # Tests and checks
@@ -282,7 +353,7 @@ cargo test --workspace
 cargo clippy --workspace --all-targets -- -D warnings
 pnpm typecheck && pnpm lint && pnpm format:check
 
-# Installer (NSIS + MSI) — see docs/release.md for the signing key
+# Installer (NSIS + MSI)
 pnpm build
 
 # Website (http://localhost:3000)
@@ -349,7 +420,7 @@ Details (in Turkish): [**docs/ARCHITECTURE.md**](docs/ARCHITECTURE.md)
 - [x] Transistors, op-amp, 555, logic gates, flip-flops, 7-segment display
 - [x] SPICE / PNG / SVG / CSV export, example gallery
 - [x] Installer and automatic update infrastructure
-- [ ] First public release
+- [ ] Publish a prebuilt installer (release)
 - [ ] New components: transformer, controlled sources, relay, shift register
 - [ ] Sparse solver for large circuits
 - [ ] Copy / paste, subcircuits

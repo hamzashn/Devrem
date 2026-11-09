@@ -6,10 +6,13 @@
 export const GITHUB_REPO = "hamzashn/Devrem";
 export const VERSION = "0.1.0";
 
-const releases = `https://github.com/${GITHUB_REPO}/releases`;
+const repo = `https://github.com/${GITHUB_REPO}`;
 
 export const LINKS = {
-  releases,
-  installer: `${releases}/latest/download/Devrem_${VERSION}_x64-setup.exe`,
-  msi: `${releases}/latest/download/Devrem_${VERSION}_x64_en-US.msi`,
+  repo,
+  releases: `${repo}/releases`,
+  /** README'deki ayrıntılı kurulum rehberi. */
+  guideTr: `${repo}#-kurulum`,
+  guideEn: `${repo}/blob/main/README.en.md#-installation`,
+  clone: `${repo}.git`,
 };
