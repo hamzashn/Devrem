@@ -3,7 +3,7 @@
  * `kullanıcı/depo` olarak güncelle (masaüstü uygulamasındaki güncelleme
  * adresiyle aynı olmalı: apps/desktop/src-tauri/tauri.conf.json).
  */
-export const GITHUB_REPO = "OWNER/devrem";
+export const GITHUB_REPO = "hamzashn/Devrem";
 export const VERSION = "0.1.0";
 
 const releases = `https://github.com/${GITHUB_REPO}/releases`;

@@ -6,17 +6,20 @@ durum çubuğunda "Güncelle ve yeniden başlat" düğmesi gösterir.
 
 ## Bir kerelik kurulum
 
-1. **GitHub deposunu oluştur** ve kodu gönder.
-2. **Güncelleme adresini ayarla:**
-   `apps/desktop/src-tauri/tauri.conf.json` → `plugins.updater.endpoints` içindeki
-   `OWNER/devrem` kısmını kendi `kullanıcı/depo` adınla değiştir.
+1. **GitHub deposu:** [hamzashn/Devrem](https://github.com/hamzashn/Devrem).
+2. **Güncelleme adresi:** `apps/desktop/src-tauri/tauri.conf.json` →
+   `plugins.updater.endpoints` ve `apps/web/lib/site.ts` → `GITHUB_REPO` bu depoyu
+   gösterir. Depo adı değişirse ikisi birlikte güncellenmelidir.
 3. **Güncelleme imza anahtarını gizli değişken olarak ekle**
    (Settings → Secrets and variables → Actions):
 
-   | Ad                                   | Değer                                    |
-   | ------------------------------------ | ---------------------------------------- |
-   | `TAURI_SIGNING_PRIVATE_KEY`          | `~/.tauri/devrem.key` dosyasının içeriği |
-   | `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` | Boş bırak (anahtar parolasız üretildi)   |
+   | Ad                          | Değer                                    |
+   | --------------------------- | ---------------------------------------- |
+   | `TAURI_SIGNING_PRIVATE_KEY` | `~/.tauri/devrem.key` dosyasının içeriği |
+
+   `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` **oluşturulmaz**: anahtar parolasız
+   üretildi ve GitHub boş değerli gizli değişken kabul etmez; iş akışı bu durumda
+   boş parola kullanır.
 
    > ⚠️ `devrem.key` gizli anahtardır; depoya eklenmemeli ve kaybedilmemelidir.
    > Kaybedilirse yayımlanmış uygulamalar yeni güncellemeleri doğrulayamaz.
