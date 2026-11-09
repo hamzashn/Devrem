@@ -1,0 +1,151 @@
+{
+  "formatVersion": 1,
+  "meta": {
+    "name": "AC ile Yanıp Sönen LED",
+    "createdWith": "Devrem 0.1.0"
+  },
+  "components": [
+    {
+      "id": "V1",
+      "kind": "acVoltage",
+      "pos": [
+        0,
+        0
+      ],
+      "rot": 0,
+      "props": {
+        "amplitude": "5",
+        "frequency": "1",
+        "offset": "0",
+        "phase": "0"
+      }
+    },
+    {
+      "id": "LED1",
+      "kind": "led",
+      "pos": [
+        6,
+        -4
+      ],
+      "rot": 0,
+      "props": {
+        "color": "green"
+      }
+    },
+    {
+      "id": "R1",
+      "kind": "resistor",
+      "pos": [
+        12,
+        0
+      ],
+      "rot": 1,
+      "props": {
+        "resistance": "220"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "ground",
+      "pos": [
+        0,
+        6
+      ],
+      "rot": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "a": [
+        0,
+        -2
+      ],
+      "b": [
+        0,
+        -4
+      ]
+    },
+    {
+      "id": "W2",
+      "a": [
+        0,
+        -4
+      ],
+      "b": [
+        4,
+        -4
+      ]
+    },
+    {
+      "id": "W3",
+      "a": [
+        8,
+        -4
+      ],
+      "b": [
+        12,
+        -4
+      ]
+    },
+    {
+      "id": "W4",
+      "a": [
+        12,
+        -4
+      ],
+      "b": [
+        12,
+        -2
+      ]
+    },
+    {
+      "id": "W5",
+      "a": [
+        12,
+        2
+      ],
+      "b": [
+        12,
+        4
+      ]
+    },
+    {
+      "id": "W6",
+      "a": [
+        12,
+        4
+      ],
+      "b": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "W7",
+      "a": [
+        0,
+        2
+      ],
+      "b": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "W8",
+      "a": [
+        0,
+        4
+      ],
+      "b": [
+        0,
+        6
+      ]
+    }
+  ],
+  "simulation": {
+    "timeScale": 1
+  }
+}

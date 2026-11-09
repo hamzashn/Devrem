@@ -1,0 +1,51 @@
+# Rust
+/target/
+**/target/
+
+# Node
+node_modules/
+dist/
+.next/
+out/
+*.tsbuildinfo
+.pnpm-store/
+npm-debug.log*
+pnpm-debug.log*
+
+# Next.js
+apps/web/next-env.d.ts
+.vercel/
+
+# Tauri
+apps/desktop/src-tauri/gen/
+
+# Gizli anahtarlar ve sertifikalar (asla depoya eklenmemeli)
+.tauri/
+*.key
+*.key.pub
+*.pem
+*.pfx
+*.p12
+*.cer
+*.crt
+*.jks
+.env
+.env.*
+!.env.example
+
+# Editörler
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# İşletim sistemi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Günlükler ve geçici dosyalar
+*.log
+*.tmp
+coverage/

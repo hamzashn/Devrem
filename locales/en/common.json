@@ -1,0 +1,286 @@
+{
+  "app": {
+    "tagline": "Electronic circuit simulator",
+    "untitled": "Untitled"
+  },
+  "toolbar": {
+    "file": "File",
+    "edit": "Edit",
+    "view": "View",
+    "simulate": "Simulate",
+    "run": "Run",
+    "stop": "Stop",
+    "language": "Language",
+    "speed": "Speed",
+    "speedHint": "Simulated time per second of real time"
+  },
+  "menu": {
+    "new": "New",
+    "open": "Open…",
+    "save": "Save",
+    "saveAs": "Save As…",
+    "undo": "Undo",
+    "redo": "Redo",
+    "rotate": "Rotate",
+    "delete": "Delete",
+    "selectAll": "Select All",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "fit": "Fit Circuit",
+    "run": "Run",
+    "stop": "Stop",
+    "dcOp": "DC Operating Point",
+    "clearResults": "Clear Results",
+    "examples": "Example Circuits…",
+    "exportSpice": "Export as SPICE Netlist…",
+    "exportPng": "Export as Image (PNG)…",
+    "exportSvg": "Export as Vector Drawing (SVG)…"
+  },
+  "sidebar": {
+    "title": "Components",
+    "search": "Search components…",
+    "soon": "Soon",
+    "categories": {
+      "passive": "Passives",
+      "sources": "Sources",
+      "semiconductors": "Semiconductors",
+      "ic": "Integrated",
+      "switches": "Switches",
+      "logic": "Logic Gates",
+      "sequential": "Sequential Logic",
+      "io": "Input / Output",
+      "measure": "Measurement"
+    }
+  },
+  "components": {
+    "ground": "Ground",
+    "resistor": "Resistor",
+    "capacitor": "Capacitor",
+    "inductor": "Inductor",
+    "dcVoltage": "DC Voltage Source",
+    "dcCurrent": "DC Current Source",
+    "acVoltage": "AC Voltage Source",
+    "diode": "Diode",
+    "led": "LED",
+    "switch": "Switch",
+    "voltmeter": "Voltmeter",
+    "ammeter": "Ammeter",
+    "npn": "NPN Transistor",
+    "pnp": "PNP Transistor",
+    "nmos": "N-MOSFET",
+    "pmos": "P-MOSFET",
+    "opAmp": "Op-Amp",
+    "and": "AND",
+    "or": "OR",
+    "not": "NOT",
+    "nand": "NAND",
+    "nor": "NOR",
+    "xor": "XOR",
+    "xnor": "XNOR",
+    "dFlipFlop": "D Flip-Flop",
+    "jkFlipFlop": "JK Flip-Flop",
+    "tFlipFlop": "T Flip-Flop",
+    "logicInput": "Logic Input",
+    "logicProbe": "Logic Probe",
+    "clock": "Clock",
+    "potentiometer": "Potentiometer",
+    "zener": "Zener Diode",
+    "pushButton": "Push Button",
+    "spdtSwitch": "SPDT Switch",
+    "lamp": "Lamp",
+    "pulseVoltage": "Pulse Source",
+    "timer555": "555 Timer",
+    "sevenSegment": "7-Segment Display",
+    "hexDecoder": "Hex → 7-Segment Decoder"
+  },
+  "props": {
+    "resistance": "Resistance",
+    "capacitance": "Capacitance",
+    "inductance": "Inductance",
+    "voltage": "Voltage",
+    "current": "Current",
+    "amplitude": "Amplitude",
+    "frequency": "Frequency",
+    "offset": "DC Offset",
+    "phase": "Phase",
+    "closed": "State",
+    "color": "Color",
+    "on": "Closed (conducting)",
+    "off": "Open",
+    "beta": "Current gain (β)",
+    "vth": "Threshold voltage",
+    "k": "Transconductance (K)",
+    "gain": "Open-loop gain",
+    "vsat": "Output limit (±)",
+    "high": "Level",
+    "position": "Position",
+    "breakdown": "Breakdown voltage",
+    "toB": "Position",
+    "toA": "Connected to A",
+    "power": "Rated power",
+    "low": "Low level",
+    "duty": "Duty cycle",
+    "atB": "Connected to B"
+  },
+  "colors": {
+    "red": "Red",
+    "green": "Green",
+    "yellow": "Yellow",
+    "blue": "Blue",
+    "white": "White"
+  },
+  "canvas": {
+    "emptyTitle": "Start a new circuit",
+    "emptyHint": "Pick or drag a component from the library on the left. Click a pin to draw a wire.",
+    "browseExamples": "Browse example circuits"
+  },
+  "properties": {
+    "title": "Properties",
+    "empty": "Select a component to see its properties.",
+    "multiple": "{{count}} items selected",
+    "wire": "Wire {{id}}",
+    "rotate": "Rotate",
+    "delete": "Delete",
+    "invalidValue": "Invalid value (e.g. 4k7, 100n, 2.2µ)",
+    "shortcuts": "Shortcuts"
+  },
+  "shortcuts": {
+    "rotate": "Rotate",
+    "wire": "Draw wire",
+    "delete": "Delete",
+    "cancel": "Cancel / deselect",
+    "undo": "Undo",
+    "run": "Start / stop simulation",
+    "pan": "Hold and drag: pan"
+  },
+  "status": {
+    "ready": "Ready",
+    "running": "Simulation running",
+    "dc": "DC operating point",
+    "engine": "Engine",
+    "browser": "Browser mode"
+  },
+  "dialogs": {
+    "discard": "You have unsaved changes. Continue anyway?"
+  },
+  "notices": {
+    "saved": "Saved {{name}}",
+    "exported": "Exported: {{path}}"
+  },
+  "errors": {
+    "emptyCircuit": "The circuit is empty: nothing to simulate",
+    "noGround": "The circuit has no ground (GND). Add one from Sources.",
+    "invalidValue": "{{component}}: invalid {{prop}} value ({{value}})",
+    "outOfRange": "{{component}}: {{prop}} must be greater than zero",
+    "singular": "Could not solve the circuit: there may be a short circuit, parallel voltage sources or an open current source",
+    "noConvergence": "The solution did not converge",
+    "io": "File error: {{message}}",
+    "parse": "Could not read file: {{message}}",
+    "newerVersion": "This file was created with a newer version of Devrem",
+    "browserMode": "Simulation only runs in the desktop app",
+    "unknown": "Unexpected error: {{message}}",
+    "noProbes": "Add a voltmeter, ammeter or logic probe to the circuit",
+    "noAcSource": "AC analysis needs an AC voltage source in the circuit",
+    "invalidSweepSource": "Select a DC voltage or current source to sweep",
+    "invalidSettings": "Invalid analysis settings (start must be positive and below stop)"
+  },
+  "levels": {
+    "high": "1 (High)",
+    "low": "0 (Low)"
+  },
+  "panel": {
+    "scope": "Oscilloscope",
+    "ac": "AC Analysis",
+    "dcSweep": "DC Sweep",
+    "show": "Show panel",
+    "hide": "Hide panel",
+    "run": "Analyze",
+    "busy": "Computing…",
+    "window": "Window",
+    "auto": "Auto",
+    "clear": "Clear",
+    "scopeIdle": "The oscilloscope plots meter readings while the real-time simulation runs. Press F5 to start.",
+    "noProbes": "Add a voltmeter, ammeter or logic probe to measure.",
+    "start": "Start",
+    "stop": "Stop",
+    "pointsPerDecade": "Points / decade",
+    "source": "Source",
+    "steps": "Steps",
+    "selectSource": "Select source…",
+    "time": "Time",
+    "frequency": "Frequency",
+    "magnitude": "Gain (dB)",
+    "phase": "Phase (°)",
+    "acHint": "The first AC source is the stimulus; gain = measured / source amplitude.",
+    "sweepHint": "Sweeps the selected source and plots the meter readings.",
+    "empty": "No results yet",
+    "exportCsv": "Export data as CSV"
+  },
+  "gallery": {
+    "title": "Example Circuits",
+    "subtitle": "Click an example to open it",
+    "close": "Close"
+  },
+  "update": {
+    "available": "Devrem {{version}} is available",
+    "install": "Update and restart",
+    "installing": "Downloading update…",
+    "failed": "Update failed: {{message}}"
+  },
+  "examples": {
+    "led": {
+      "title": "LED Circuit",
+      "description": "An LED with a current-limiting resistor and an ammeter."
+    },
+    "gerilim-bolucu": {
+      "title": "Voltage Divider",
+      "description": "Divide a voltage with two resistors; measure it with a voltmeter."
+    },
+    "rc-sarj": {
+      "title": "RC Charging",
+      "description": "Close the switch and watch the capacitor charge in real time."
+    },
+    "ac-led": {
+      "title": "AC Blinking LED",
+      "description": "The LED lights on the positive half of the sine wave."
+    },
+    "isik-ayari": {
+      "title": "Light Dimmer",
+      "description": "Drag the potentiometer to change the lamp's brightness."
+    },
+    "transistor-anahtar": {
+      "title": "Transistor Switch",
+      "description": "A small base current lets an NPN transistor light an LED."
+    },
+    "zener-regulator": {
+      "title": "Zener Regulator",
+      "description": "A zener diode holds the output at 5.1 V."
+    },
+    "evirici-yukselteci": {
+      "title": "Inverting Amplifier",
+      "description": "An op-amp with a gain of −10; input and output on the scope."
+    },
+    "rc-alcak-geciren": {
+      "title": "RC Low-Pass Filter",
+      "description": "Bode plot from AC analysis: −3 dB at 1 kHz."
+    },
+    "555-flasor": {
+      "title": "555 Flasher",
+      "description": "A 555 timer in astable mode blinks an LED."
+    },
+    "sayici": {
+      "title": "2-Bit Counter",
+      "description": "Binary counting with a clock and T flip-flops."
+    },
+    "hex-sayac": {
+      "title": "Hex Counter",
+      "description": "A 4-bit counter, decoder and 7-segment display: 0 to F."
+    }
+  },
+  "crash": {
+    "title": "Something went wrong",
+    "text": "An unexpected error occurred in the interface. You can try to continue or reload the window (unsaved changes will be lost).",
+    "retry": "Try to continue",
+    "reload": "Reload"
+  }
+}

@@ -1,0 +1,15 @@
+[package]
+name = "devrem-components"
+description = "Devrem bileşen modelleri (MNA stamp fonksiyonları)"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+devrem-core.workspace = true
+serde_json = "1.0.154"
+
+[lints]
+workspace = true

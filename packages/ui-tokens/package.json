@@ -1,0 +1,10 @@
+{
+  "name": "@devrem/ui-tokens",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "description": "Devrem ortak tasarım token'ları (renk, tipografi)",
+  "exports": {
+    "./tokens.css": "./tokens.css"
+  }
+}

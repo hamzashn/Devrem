@@ -1,0 +1,434 @@
+{
+  "ground": {
+    "prefix": "GND",
+    "category": "sources",
+    "pins": [[0, 0]],
+    "props": {}
+  },
+  "resistor": {
+    "prefix": "R",
+    "category": "passive",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "resistance": "1k"
+    }
+  },
+  "capacitor": {
+    "prefix": "C",
+    "category": "passive",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "capacitance": "100µ"
+    }
+  },
+  "inductor": {
+    "prefix": "L",
+    "category": "passive",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "inductance": "100m"
+    }
+  },
+  "dcVoltage": {
+    "prefix": "V",
+    "category": "sources",
+    "pins": [
+      [0, -2],
+      [0, 2]
+    ],
+    "props": {
+      "voltage": "5"
+    }
+  },
+  "dcCurrent": {
+    "prefix": "I",
+    "category": "sources",
+    "pins": [
+      [0, -2],
+      [0, 2]
+    ],
+    "props": {
+      "current": "10m"
+    }
+  },
+  "acVoltage": {
+    "prefix": "V",
+    "category": "sources",
+    "pins": [
+      [0, -2],
+      [0, 2]
+    ],
+    "props": {
+      "amplitude": "5",
+      "frequency": "1",
+      "offset": "0",
+      "phase": "0"
+    }
+  },
+  "diode": {
+    "prefix": "D",
+    "category": "semiconductors",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {}
+  },
+  "led": {
+    "prefix": "LED",
+    "category": "semiconductors",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "color": "red"
+    }
+  },
+  "switch": {
+    "prefix": "S",
+    "category": "switches",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "closed": false
+    }
+  },
+  "voltmeter": {
+    "prefix": "VM",
+    "category": "measure",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {}
+  },
+  "ammeter": {
+    "prefix": "AM",
+    "category": "measure",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {}
+  },
+  "npn": {
+    "prefix": "Q",
+    "category": "semiconductors",
+    "pins": [
+      [1, -2],
+      [-2, 0],
+      [1, 2]
+    ],
+    "props": {
+      "beta": "100"
+    }
+  },
+  "pnp": {
+    "prefix": "Q",
+    "category": "semiconductors",
+    "pins": [
+      [1, 2],
+      [-2, 0],
+      [1, -2]
+    ],
+    "props": {
+      "beta": "100"
+    }
+  },
+  "nmos": {
+    "prefix": "M",
+    "category": "semiconductors",
+    "pins": [
+      [1, -2],
+      [-2, 0],
+      [1, 2]
+    ],
+    "props": {
+      "vth": "2",
+      "k": "100m"
+    }
+  },
+  "pmos": {
+    "prefix": "M",
+    "category": "semiconductors",
+    "pins": [
+      [1, 2],
+      [-2, 0],
+      [1, -2]
+    ],
+    "props": {
+      "vth": "2",
+      "k": "100m"
+    }
+  },
+  "opAmp": {
+    "prefix": "OP",
+    "category": "ic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {
+      "gain": "100k",
+      "vsat": "15"
+    }
+  },
+  "and": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "or": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "not": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, 0],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "nand": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "nor": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "xor": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "xnor": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, 0]
+    ],
+    "props": {}
+  },
+  "dFlipFlop": {
+    "prefix": "FF",
+    "category": "sequential",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, -1],
+      [3, 1]
+    ],
+    "props": {}
+  },
+  "jkFlipFlop": {
+    "prefix": "FF",
+    "category": "sequential",
+    "pins": [
+      [-3, -1],
+      [-3, 0],
+      [-3, 1],
+      [3, -1],
+      [3, 1]
+    ],
+    "props": {}
+  },
+  "tFlipFlop": {
+    "prefix": "FF",
+    "category": "sequential",
+    "pins": [
+      [-3, -1],
+      [-3, 1],
+      [3, -1],
+      [3, 1]
+    ],
+    "props": {}
+  },
+  "logicInput": {
+    "prefix": "IN",
+    "category": "io",
+    "pins": [[2, 0]],
+    "props": {
+      "high": false
+    }
+  },
+  "logicProbe": {
+    "prefix": "OUT",
+    "category": "io",
+    "pins": [[-2, 0]],
+    "props": {}
+  },
+  "clock": {
+    "prefix": "CLK",
+    "category": "io",
+    "pins": [[2, 0]],
+    "props": {
+      "frequency": "1"
+    }
+  },
+  "potentiometer": {
+    "prefix": "RV",
+    "category": "passive",
+    "pins": [
+      [-2, 0],
+      [2, 0],
+      [0, -2]
+    ],
+    "props": {
+      "resistance": "10k",
+      "position": 50
+    }
+  },
+  "zener": {
+    "prefix": "D",
+    "category": "semiconductors",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "breakdown": "5.1"
+    }
+  },
+  "pushButton": {
+    "prefix": "S",
+    "category": "switches",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {}
+  },
+  "spdtSwitch": {
+    "prefix": "S",
+    "category": "switches",
+    "pins": [
+      [-2, 0],
+      [2, -1],
+      [2, 1]
+    ],
+    "props": {
+      "toB": false
+    }
+  },
+  "lamp": {
+    "prefix": "LP",
+    "category": "io",
+    "pins": [
+      [-2, 0],
+      [2, 0]
+    ],
+    "props": {
+      "voltage": "12",
+      "power": "1"
+    }
+  },
+  "pulseVoltage": {
+    "prefix": "V",
+    "category": "sources",
+    "pins": [
+      [0, -2],
+      [0, 2]
+    ],
+    "props": {
+      "low": "0",
+      "high": "5",
+      "frequency": "1",
+      "duty": "50"
+    }
+  },
+  "timer555": {
+    "prefix": "U",
+    "category": "ic",
+    "pins": [
+      [1, 4],
+      [-3, 1],
+      [3, -1],
+      [-1, -4],
+      [-1, 4],
+      [-3, -1],
+      [3, 1],
+      [1, -4]
+    ],
+    "props": {}
+  },
+  "sevenSegment": {
+    "prefix": "DS",
+    "category": "io",
+    "pins": [
+      [-3, -3],
+      [-3, -2],
+      [-3, -1],
+      [-3, 0],
+      [-3, 1],
+      [-3, 2],
+      [-3, 3]
+    ],
+    "props": {
+      "color": "red"
+    }
+  },
+  "hexDecoder": {
+    "prefix": "U",
+    "category": "logic",
+    "pins": [
+      [-3, -3],
+      [-3, -1],
+      [-3, 1],
+      [-3, 3],
+      [3, -3],
+      [3, -2],
+      [3, -1],
+      [3, 0],
+      [3, 1],
+      [3, 2],
+      [3, 3]
+    ],
+    "props": {}
+  }
+}

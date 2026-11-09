@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "title": "Devrem — A modern electronic circuit simulator",
+    "description": "Draw your circuit, run it, watch the current flow. A fast, dark-themed electronic circuit simulator for Windows."
+  },
+  "nav": {
+    "features": "Features",
+    "docs": "Docs",
+    "changelog": "Changelog",
+    "download": "Download"
+  },
+  "hero": {
+    "badge": "Free · No account needed · Windows 10/11",
+    "title": "Draw your circuit, run it,",
+    "titleAccent": "watch the current flow.",
+    "subtitle": "Devrem is a fast, modern electronic circuit simulator written in Rust that simulates analog and digital circuits in real time.",
+    "primary": "Download for Free",
+    "secondary": "What can it do?"
+  },
+  "features": {
+    "title": "Your lab bench, on your screen",
+    "subtitle": "Tools that make building and understanding circuits easier, from students to engineers.",
+    "items": [
+      {
+        "title": "Real-time simulation",
+        "text": "Change a value and see the result instantly. Wires are colored by voltage and current flows as moving dots."
+      },
+      {
+        "title": "Analog and digital together",
+        "text": "Transistors, op-amps and the 555 work alongside logic gates, flip-flops and 7-segment displays in one circuit."
+      },
+      {
+        "title": "Oscilloscope and Bode plots",
+        "text": "Watch meters live, get the frequency response with AC analysis and characteristic curves with DC sweeps."
+      },
+      {
+        "title": "An engine written in Rust",
+        "text": "An MNA-based simulation engine with a Newton-Raphson solver, tested against analytic solutions."
+      },
+      {
+        "title": "An easy schematic editor",
+        "text": "Drag and drop, wires from any pin, smart connections, undo / redo and SI-prefixed values (4k7, 100n)."
+      },
+      {
+        "title": "Export and share",
+        "text": "Save circuits as .dvrm; export SPICE netlists, PNG, SVG and CSV."
+      }
+    ]
+  },
+  "showcase": {
+    "scopeTitle": "Live oscilloscope",
+    "scopeText": "Input and output of an inverting op-amp amplifier on the same screen.",
+    "digitalTitle": "Digital circuits",
+    "digitalText": "A hex counter with a clock, flip-flops, a decoder and a 7-segment display.",
+    "acTitle": "AC analysis",
+    "acText": "Bode plot of an RC low-pass filter: −3 dB at 1 kHz."
+  },
+  "components": {
+    "title": "39 components, 12 ready-made examples",
+    "groups": [
+      {
+        "name": "Passives",
+        "items": "Resistor, capacitor, inductor, potentiometer"
+      },
+      {
+        "name": "Sources",
+        "items": "DC voltage and current, AC, pulse, ground"
+      },
+      {
+        "name": "Semiconductors",
+        "items": "Diode, LED, zener, NPN, PNP, N/P-MOSFET"
+      },
+      {
+        "name": "Integrated",
+        "items": "Op-amp, 555 timer"
+      },
+      {
+        "name": "Logic",
+        "items": "AND, OR, NOT, NAND, NOR, XOR, XNOR, hex decoder"
+      },
+      {
+        "name": "Sequential",
+        "items": "D, JK and T flip-flops"
+      },
+      {
+        "name": "Input / output",
+        "items": "Switch, push button, logic input and probe, clock, lamp, 7-segment"
+      },
+      {
+        "name": "Measurement",
+        "items": "Voltmeter, ammeter, oscilloscope"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Build your first circuit in minutes",
+    "text": "Devrem is free and needs no account. Download it, open a circuit from the example gallery and press F5.",
+    "button": "Download Devrem"
+  },
+  "download": {
+    "title": "Download Devrem",
+    "subtitle": "Version {{version}} · Windows 10 / 11 (64-bit)",
+    "installer": "Installer (.exe)",
+    "msi": "Enterprise installer (.msi)",
+    "allReleases": "All releases",
+    "requirementsTitle": "System requirements",
+    "requirements": [
+      "Windows 10 (1809 or later) or Windows 11, 64-bit",
+      "Microsoft Edge WebView2 (preinstalled on Windows 11; the installer fetches it if needed)",
+      "4 GB RAM, ~50 MB disk space"
+    ],
+    "smartscreenTitle": "\"Windows protected your PC\" warning",
+    "smartscreen": "Devrem is not yet signed with a code-signing certificate, so Windows SmartScreen may warn on first install. Choose \"More info\" → \"Run anyway\" to continue.",
+    "updatesTitle": "Automatic updates",
+    "updates": "When a new version is released, Devrem tells you on startup and updates in one click."
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "Everything you need to get started with Devrem.",
+    "sections": [
+      {
+        "title": "1. Placing components",
+        "body": [
+          "Pick a component from the list on the left and click the canvas, or drag and drop it. While placing, press R to rotate and Esc to stop.",
+          "Select a component to change its values in the Properties panel on the right."
+        ]
+      },
+      {
+        "title": "2. Drawing wires",
+        "body": [
+          "Click a pin, click to add corners; the wire finishes automatically when you click another pin, a wire end or a wire.",
+          "You can also drag from pin to pin. Press W to start a wire at the cursor."
+        ]
+      },
+      {
+        "title": "3. Simulation",
+        "body": [
+          "Press F5 to start the real-time simulation. Wires are colored by voltage: red is high, gray is ground, blue is negative.",
+          "While it runs you can click switches, push buttons and logic inputs or drag a potentiometer; the circuit state is kept.",
+          "The speed selector sets how much simulated time passes per second of real time. Slow it down to watch fast signals."
+        ]
+      },
+      {
+        "title": "4. Analyses",
+        "body": [
+          "The Oscilloscope in the bottom panel plots voltmeter / ammeter / logic probe readings live.",
+          "AC Analysis uses the first AC source as the stimulus and produces a Bode plot. DC Sweep sweeps a selected DC source.",
+          "Every analysis can be exported as CSV."
+        ]
+      },
+      {
+        "title": "5. Writing values",
+        "body": [
+          "Values use SI prefixes: 4k7 = 4.7 kΩ; 100n = 100 nF; 2.2µ or 2.2u = 2.2 µ; 1M = 1 mega; 1m = 1 milli.",
+          "Units are optional: 10kΩ, 5V, 50Hz."
+        ]
+      }
+    ],
+    "shortcutsTitle": "Keyboard shortcuts",
+    "shortcuts": [
+      ["R", "Rotate"],
+      ["W", "Draw wire"],
+      ["Del", "Delete"],
+      ["Esc", "Cancel / deselect"],
+      ["Ctrl+Z / Ctrl+Y", "Undo / redo"],
+      ["Ctrl+A", "Select all"],
+      ["Ctrl+S / Ctrl+O / Ctrl+N", "Save / open / new"],
+      ["F5", "Start / stop simulation"],
+      ["Space + drag, middle button", "Pan"],
+      ["Wheel, Ctrl+0", "Zoom, fit circuit"]
+    ]
+  },
+  "changelog": {
+    "title": "Changelog"
+  },
+  "footer": {
+    "rights": "© 2026 HamzaShn · Open source under the MIT License.",
+    "madeWith": "Built with Rust and Tauri."
+  }
+}

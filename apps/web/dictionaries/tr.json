@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "title": "Devrem — Modern elektronik devre simülatörü",
+    "description": "Devreni çiz, çalıştır, akımın aktığını gör. Windows için hızlı, koyu temalı, Türkçe elektronik devre simülatörü."
+  },
+  "nav": {
+    "features": "Özellikler",
+    "docs": "Belgeler",
+    "changelog": "Değişiklikler",
+    "download": "İndir"
+  },
+  "hero": {
+    "badge": "Ücretsiz · Hesap gerekmez · Windows 10/11",
+    "title": "Devreni çiz, çalıştır,",
+    "titleAccent": "akımın aktığını gör.",
+    "subtitle": "Devrem; analog ve dijital devreleri gerçek zamanlı simüle eden, Rust ile yazılmış hızlı ve modern bir elektronik devre simülatörüdür.",
+    "primary": "Ücretsiz İndir",
+    "secondary": "Neler yapabilir?"
+  },
+  "features": {
+    "title": "Laboratuvar masan, ekranında",
+    "subtitle": "Öğrenciden mühendise, devre kurmayı ve anlamayı kolaylaştıran araçlar.",
+    "items": [
+      {
+        "title": "Gerçek zamanlı simülasyon",
+        "text": "Bir değeri değiştir, sonucu anında gör. Teller gerilime göre renklenir, akım hareketli noktalarla akar."
+      },
+      {
+        "title": "Analog ve dijital birlikte",
+        "text": "Transistörler, op-amp'ler ve 555 ile lojik kapılar, flip-flop'lar ve 7 segment göstergeler aynı devrede çalışır."
+      },
+      {
+        "title": "Osiloskop ve Bode diyagramı",
+        "text": "Ölçüm aletlerini canlı izle, AC analiziyle frekans tepkisini, DC taramayla karakteristik eğrileri çıkar."
+      },
+      {
+        "title": "Rust ile yazılmış motor",
+        "text": "MNA tabanlı, Newton-Raphson çözücülü simülasyon motoru; analitik çözümlerle test edilmiştir."
+      },
+      {
+        "title": "Kolay şema editörü",
+        "text": "Sürükle-bırak, pinden tel çekme, akıllı bağlantı, geri al / yinele ve SI önekli değerler (4k7, 100n)."
+      },
+      {
+        "title": "Dışa aktar ve paylaş",
+        "text": "Devreleri .dvrm olarak kaydet; SPICE netlist, PNG, SVG ve CSV olarak dışa aktar."
+      }
+    ]
+  },
+  "showcase": {
+    "scopeTitle": "Canlı osiloskop",
+    "scopeText": "Eviren op-amp yükselteçinin girişi ve çıkışı aynı ekranda.",
+    "digitalTitle": "Dijital devreler",
+    "digitalText": "Saat üreteci, flip-flop'lar, çözücü ve 7 segment gösterge ile onaltılık sayıcı.",
+    "acTitle": "AC analizi",
+    "acText": "RC alçak geçiren filtrenin Bode diyagramı: 1 kHz'de −3 dB."
+  },
+  "components": {
+    "title": "39 bileşen, 12 hazır örnek",
+    "groups": [
+      {
+        "name": "Pasifler",
+        "items": "Direnç, kondansatör, bobin, potansiyometre"
+      },
+      {
+        "name": "Kaynaklar",
+        "items": "DC gerilim ve akım, AC, kare dalga, toprak"
+      },
+      {
+        "name": "Yarı iletkenler",
+        "items": "Diyot, LED, zener, NPN, PNP, N/P-MOSFET"
+      },
+      {
+        "name": "Entegre",
+        "items": "Op-amp, 555 zamanlayıcı"
+      },
+      {
+        "name": "Lojik",
+        "items": "AND, OR, NOT, NAND, NOR, XOR, XNOR, hex çözücü"
+      },
+      {
+        "name": "Ardışıl",
+        "items": "D, JK ve T flip-flop"
+      },
+      {
+        "name": "Giriş / çıkış",
+        "items": "Anahtar, buton, lojik giriş ve prob, saat, lamba, 7 segment"
+      },
+      {
+        "name": "Ölçüm",
+        "items": "Voltmetre, ampermetre, osiloskop"
+      }
+    ]
+  },
+  "cta": {
+    "title": "İlk devreni dakikalar içinde kur",
+    "text": "Devrem ücretsizdir ve hesap gerektirmez. İndir, örnek galerisinden bir devre aç ve F5'e bas.",
+    "button": "Devrem'i İndir"
+  },
+  "download": {
+    "title": "Devrem'i indir",
+    "subtitle": "Sürüm {{version}} · Windows 10 / 11 (64 bit)",
+    "installer": "Kurulum dosyası (.exe)",
+    "msi": "Kurumsal kurulum (.msi)",
+    "allReleases": "Tüm sürümler",
+    "requirementsTitle": "Sistem gereksinimleri",
+    "requirements": [
+      "Windows 10 (1809 ve sonrası) veya Windows 11, 64 bit",
+      "Microsoft Edge WebView2 (Windows 11'de yüklü gelir; gerekirse kurulum indirir)",
+      "4 GB RAM, ~50 MB disk alanı"
+    ],
+    "smartscreenTitle": "\"Windows bilgisayarınızı korudu\" uyarısı",
+    "smartscreen": "Devrem henüz kod imzalama sertifikasıyla imzalanmadığı için Windows SmartScreen ilk kurulumda uyarı gösterebilir. \"Ek bilgi\" → \"Yine de çalıştır\" ile devam edebilirsiniz.",
+    "updatesTitle": "Otomatik güncelleme",
+    "updates": "Yeni bir sürüm çıktığında Devrem bunu açılışta bildirir; tek tıkla güncellenir."
+  },
+  "docs": {
+    "title": "Belgeler",
+    "subtitle": "Devrem'i kullanmaya başlamak için ihtiyacın olan her şey.",
+    "sections": [
+      {
+        "title": "1. Bileşen yerleştirme",
+        "body": [
+          "Soldaki listeden bir bileşen seç ve tuvale tıkla ya da sürükleyip bırak. Yerleştirme sırasında R ile döndür, Esc ile çık.",
+          "Bir bileşeni seçince sağdaki Özellikler panelinden değerini değiştirebilirsin."
+        ]
+      },
+      {
+        "title": "2. Tel çizme",
+        "body": [
+          "Bir pine tıkla, telin köşelerini tıklayarak belirle; başka bir pine, tel ucuna veya tele tıkladığında tel otomatik biter.",
+          "Pinden pine sürükleyerek de bağlayabilirsin. W tuşu imlecin olduğu yerden tel başlatır."
+        ]
+      },
+      {
+        "title": "3. Simülasyon",
+        "body": [
+          "F5 ile gerçek zamanlı simülasyonu başlat. Teller gerilime göre renklenir: kırmızı yüksek, gri toprak, mavi negatif.",
+          "Simülasyon sırasında anahtarlara, butonlara ve lojik girişlere tıklayabilir, potansiyometreyi kaydırabilirsin; devrenin durumu korunur.",
+          "Hız seçicisi, gerçek zamanın bir saniyesinde ne kadar simülasyon süresi geçeceğini belirler. Hızlı sinyalleri izlemek için yavaşlat."
+        ]
+      },
+      {
+        "title": "4. Analizler",
+        "body": [
+          "Alt paneldeki Osiloskop, voltmetre / ampermetre / lojik prob okumalarını canlı çizer.",
+          "AC Analizi, ilk AC kaynağı uyarı olarak kullanıp Bode diyagramı çıkarır. DC Tarama, seçilen bir DC kaynağı tarar.",
+          "Her analizin verisi CSV olarak dışa aktarılabilir."
+        ]
+      },
+      {
+        "title": "5. Değer yazımı",
+        "body": [
+          "Değerler SI önekleriyle yazılır: 4k7 = 4,7 kΩ; 100n = 100 nF; 2.2µ veya 2,2u = 2,2 µ; 1M = 1 mega; 1m = 1 mili.",
+          "Birim eklemek isteğe bağlıdır: 10kΩ, 5V, 50Hz."
+        ]
+      }
+    ],
+    "shortcutsTitle": "Klavye kısayolları",
+    "shortcuts": [
+      ["R", "Döndür"],
+      ["W", "Tel çiz"],
+      ["Del", "Sil"],
+      ["Esc", "İptal / seçimi kaldır"],
+      ["Ctrl+Z / Ctrl+Y", "Geri al / yinele"],
+      ["Ctrl+A", "Tümünü seç"],
+      ["Ctrl+S / Ctrl+O / Ctrl+N", "Kaydet / aç / yeni"],
+      ["F5", "Simülasyonu başlat / durdur"],
+      ["Boşluk + sürükle, orta tuş", "Kaydır"],
+      ["Tekerlek, Ctrl+0", "Yakınlaştır, devreyi sığdır"]
+    ]
+  },
+  "changelog": {
+    "title": "Değişiklik günlüğü"
+  },
+  "footer": {
+    "rights": "© 2026 HamzaShn · MIT lisanslı açık kaynak yazılım.",
+    "madeWith": "Rust ve Tauri ile geliştirildi."
+  }
+}

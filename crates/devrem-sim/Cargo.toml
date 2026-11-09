@@ -1,0 +1,21 @@
+[package]
+name = "devrem-sim"
+description = "Devrem simülasyon motoru (MNA çözücü, analizler, dijital simülatör)"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+devrem-core.workspace = true
+devrem-components.workspace = true
+serde = { version = "1.0.229", features = ["derive"] }
+num-complex = "0.4.6"
+serde_json = "1.0.154"
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+serde_json = "1.0.154"

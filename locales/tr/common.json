@@ -1,0 +1,286 @@
+{
+  "app": {
+    "tagline": "Elektronik devre simülatörü",
+    "untitled": "Adsız"
+  },
+  "toolbar": {
+    "file": "Dosya",
+    "edit": "Düzen",
+    "view": "Görünüm",
+    "simulate": "Simülasyon",
+    "run": "Çalıştır",
+    "stop": "Durdur",
+    "language": "Dil",
+    "speed": "Hız",
+    "speedHint": "Gerçek zamanın 1 saniyesinde ilerleyen simülasyon süresi"
+  },
+  "menu": {
+    "new": "Yeni",
+    "open": "Aç…",
+    "save": "Kaydet",
+    "saveAs": "Farklı Kaydet…",
+    "undo": "Geri Al",
+    "redo": "Yinele",
+    "rotate": "Döndür",
+    "delete": "Sil",
+    "selectAll": "Tümünü Seç",
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır",
+    "fit": "Devreyi Sığdır",
+    "run": "Çalıştır",
+    "stop": "Durdur",
+    "dcOp": "DC Çalışma Noktası",
+    "clearResults": "Sonuçları Temizle",
+    "examples": "Örnek Devreler…",
+    "exportSpice": "SPICE Netlist Olarak Dışa Aktar…",
+    "exportPng": "Görüntü Olarak Dışa Aktar (PNG)…",
+    "exportSvg": "Vektörel Çizim Olarak Dışa Aktar (SVG)…"
+  },
+  "sidebar": {
+    "title": "Bileşenler",
+    "search": "Bileşen ara…",
+    "soon": "Yakında",
+    "categories": {
+      "passive": "Pasifler",
+      "sources": "Kaynaklar",
+      "semiconductors": "Yarı İletkenler",
+      "ic": "Entegre",
+      "switches": "Anahtarlar",
+      "logic": "Lojik Kapılar",
+      "sequential": "Ardışıl Lojik",
+      "io": "Giriş / Çıkış",
+      "measure": "Ölçüm"
+    }
+  },
+  "components": {
+    "ground": "Toprak",
+    "resistor": "Direnç",
+    "capacitor": "Kondansatör",
+    "inductor": "Bobin",
+    "dcVoltage": "DC Gerilim Kaynağı",
+    "dcCurrent": "DC Akım Kaynağı",
+    "acVoltage": "AC Gerilim Kaynağı",
+    "diode": "Diyot",
+    "led": "LED",
+    "switch": "Anahtar",
+    "voltmeter": "Voltmetre",
+    "ammeter": "Ampermetre",
+    "npn": "NPN Transistör",
+    "pnp": "PNP Transistör",
+    "nmos": "N-MOSFET",
+    "pmos": "P-MOSFET",
+    "opAmp": "Op-Amp",
+    "and": "VE (AND)",
+    "or": "VEYA (OR)",
+    "not": "DEĞİL (NOT)",
+    "nand": "VE DEĞİL (NAND)",
+    "nor": "VEYA DEĞİL (NOR)",
+    "xor": "ÖZEL VEYA (XOR)",
+    "xnor": "XNOR",
+    "dFlipFlop": "D Flip-Flop",
+    "jkFlipFlop": "JK Flip-Flop",
+    "tFlipFlop": "T Flip-Flop",
+    "logicInput": "Lojik Giriş",
+    "logicProbe": "Lojik Prob",
+    "clock": "Saat Üreteci",
+    "potentiometer": "Potansiyometre",
+    "zener": "Zener Diyot",
+    "pushButton": "Buton",
+    "spdtSwitch": "İki Yollu Anahtar",
+    "lamp": "Lamba",
+    "pulseVoltage": "Kare Dalga Kaynağı",
+    "timer555": "555 Zamanlayıcı",
+    "sevenSegment": "7 Segment Gösterge",
+    "hexDecoder": "Hex → 7 Segment Çözücü"
+  },
+  "props": {
+    "resistance": "Direnç",
+    "capacitance": "Kapasitans",
+    "inductance": "Endüktans",
+    "voltage": "Gerilim",
+    "current": "Akım",
+    "amplitude": "Genlik",
+    "frequency": "Frekans",
+    "offset": "DC Ofset",
+    "phase": "Faz",
+    "closed": "Durum",
+    "color": "Renk",
+    "on": "Kapalı (iletiyor)",
+    "off": "Açık",
+    "beta": "Akım kazancı (β)",
+    "vth": "Eşik gerilimi",
+    "k": "İletim katsayısı (K)",
+    "gain": "Açık çevrim kazancı",
+    "vsat": "Çıkış sınırı (±)",
+    "high": "Seviye",
+    "position": "Konum",
+    "breakdown": "Kırılma gerilimi",
+    "toB": "Konum",
+    "toA": "A ucuna bağlı",
+    "power": "Anma gücü",
+    "low": "Düşük seviye",
+    "duty": "Doluluk oranı",
+    "atB": "B ucuna bağlı"
+  },
+  "colors": {
+    "red": "Kırmızı",
+    "green": "Yeşil",
+    "yellow": "Sarı",
+    "blue": "Mavi",
+    "white": "Beyaz"
+  },
+  "canvas": {
+    "emptyTitle": "Yeni bir devreye başla",
+    "emptyHint": "Soldaki kütüphaneden bir bileşen seç veya sürükle. Tel çekmek için bir pine tıkla.",
+    "browseExamples": "Örnek devreleri incele"
+  },
+  "properties": {
+    "title": "Özellikler",
+    "empty": "Özelliklerini görmek için bir bileşen seç.",
+    "multiple": "{{count}} öğe seçili",
+    "wire": "Tel {{id}}",
+    "rotate": "Döndür",
+    "delete": "Sil",
+    "invalidValue": "Geçersiz değer (ör. 4k7, 100n, 2.2µ)",
+    "shortcuts": "Kısayollar"
+  },
+  "shortcuts": {
+    "rotate": "Döndür",
+    "wire": "Tel çiz",
+    "delete": "Sil",
+    "cancel": "İptal / seçimi kaldır",
+    "undo": "Geri al",
+    "run": "Simülasyonu başlat / durdur",
+    "pan": "Basılı tutup sürükle: kaydır"
+  },
+  "status": {
+    "ready": "Hazır",
+    "running": "Simülasyon çalışıyor",
+    "dc": "DC çalışma noktası",
+    "engine": "Motor",
+    "browser": "Tarayıcı modu"
+  },
+  "dialogs": {
+    "discard": "Kaydedilmemiş değişiklikler var. Yine de devam edilsin mi?"
+  },
+  "notices": {
+    "saved": "{{name}} kaydedildi",
+    "exported": "Dışa aktarıldı: {{path}}"
+  },
+  "errors": {
+    "emptyCircuit": "Devre boş: simüle edilecek bileşen yok",
+    "noGround": "Devrede toprak (GND) yok. Kaynaklar bölümünden bir toprak ekle.",
+    "invalidValue": "{{component}}: {{prop}} değeri geçersiz ({{value}})",
+    "outOfRange": "{{component}}: {{prop}} sıfırdan büyük olmalı",
+    "singular": "Devre çözülemedi: kısa devre, paralel gerilim kaynakları veya açık uçlu akım kaynağı olabilir",
+    "noConvergence": "Çözüm yakınsamadı",
+    "io": "Dosya hatası: {{message}}",
+    "parse": "Dosya okunamadı: {{message}}",
+    "newerVersion": "Bu dosya Devrem'in daha yeni bir sürümüyle oluşturulmuş",
+    "browserMode": "Simülasyon yalnızca masaüstü uygulamasında çalışır",
+    "unknown": "Beklenmeyen hata: {{message}}",
+    "noProbes": "Analiz için devreye voltmetre, ampermetre veya lojik prob ekle",
+    "noAcSource": "AC analizi için devrede bir AC gerilim kaynağı olmalı",
+    "invalidSweepSource": "Taranacak bir DC gerilim veya akım kaynağı seç",
+    "invalidSettings": "Analiz ayarları geçersiz (başlangıç bitişten küçük ve pozitif olmalı)"
+  },
+  "levels": {
+    "high": "1 (Yüksek)",
+    "low": "0 (Düşük)"
+  },
+  "panel": {
+    "scope": "Osiloskop",
+    "ac": "AC Analizi",
+    "dcSweep": "DC Tarama",
+    "show": "Paneli göster",
+    "hide": "Paneli gizle",
+    "run": "Analiz Et",
+    "busy": "Hesaplanıyor…",
+    "window": "Pencere",
+    "auto": "Otomatik",
+    "clear": "Temizle",
+    "scopeIdle": "Osiloskop, gerçek zamanlı simülasyon sırasında ölçüm aletlerinin değerlerini çizer. Başlatmak için F5.",
+    "noProbes": "Ölçüm için devreye voltmetre, ampermetre veya lojik prob ekle.",
+    "start": "Başlangıç",
+    "stop": "Bitiş",
+    "pointsPerDecade": "Nokta / dekad",
+    "source": "Kaynak",
+    "steps": "Adım",
+    "selectSource": "Kaynak seç…",
+    "time": "Zaman",
+    "frequency": "Frekans",
+    "magnitude": "Kazanç (dB)",
+    "phase": "Faz (°)",
+    "acHint": "İlk AC kaynak uyarı olarak kullanılır; kazanç = ölçülen / kaynak genliği.",
+    "sweepHint": "Seçilen kaynağın değeri taranır, ölçüm aletlerinin okumaları çizilir.",
+    "empty": "Henüz sonuç yok",
+    "exportCsv": "Verileri CSV olarak dışa aktar"
+  },
+  "gallery": {
+    "title": "Örnek Devreler",
+    "subtitle": "Bir örneği açmak için tıkla",
+    "close": "Kapat"
+  },
+  "update": {
+    "available": "Devrem {{version}} yayımlandı",
+    "install": "Güncelle ve yeniden başlat",
+    "installing": "Güncelleme indiriliyor…",
+    "failed": "Güncelleme yüklenemedi: {{message}}"
+  },
+  "examples": {
+    "led": {
+      "title": "LED Devresi",
+      "description": "Akım sınırlayıcı dirençle LED ve ampermetre."
+    },
+    "gerilim-bolucu": {
+      "title": "Gerilim Bölücü",
+      "description": "İki dirençle gerilimi bölme; voltmetreyle ölçüm."
+    },
+    "rc-sarj": {
+      "title": "RC Şarj",
+      "description": "Anahtarı kapat, kondansatörün dolmasını gerçek zamanlı izle."
+    },
+    "ac-led": {
+      "title": "AC ile Yanıp Sönen LED",
+      "description": "Sinüs kaynağın pozitif yarısında LED yanar."
+    },
+    "isik-ayari": {
+      "title": "Işık Ayarı",
+      "description": "Potansiyometreyi kaydırarak lambanın parlaklığını değiştir."
+    },
+    "transistor-anahtar": {
+      "title": "Transistörlü Anahtar",
+      "description": "Küçük baz akımıyla NPN transistör LED'i yakar."
+    },
+    "zener-regulator": {
+      "title": "Zener Regülatörü",
+      "description": "Zener diyot çıkışı 5,1 V'ta sabit tutar."
+    },
+    "evirici-yukselteci": {
+      "title": "Eviren Yükselteç",
+      "description": "Op-amp ile −10 kazanç; osiloskopta giriş ve çıkış."
+    },
+    "rc-alcak-geciren": {
+      "title": "RC Alçak Geçiren Filtre",
+      "description": "AC analiziyle Bode diyagramı: 1 kHz'de −3 dB."
+    },
+    "555-flasor": {
+      "title": "555 Flaşör",
+      "description": "Kararsız moddaki 555 zamanlayıcı LED'i yakıp söndürür."
+    },
+    "sayici": {
+      "title": "2 Bitlik Sayıcı",
+      "description": "Saat üreteci ve T flip-flop'larla ikili sayma."
+    },
+    "hex-sayac": {
+      "title": "Onaltılık Sayıcı",
+      "description": "4 bitlik sayıcı, çözücü ve 7 segment gösterge: 0'dan F'ye."
+    }
+  },
+  "crash": {
+    "title": "Bir şeyler ters gitti",
+    "text": "Arayüzde beklenmeyen bir hata oluştu. Devam etmeyi deneyebilir veya pencereyi yeniden yükleyebilirsin (kaydedilmemiş değişiklikler kaybolur).",
+    "retry": "Devam etmeyi dene",
+    "reload": "Yeniden yükle"
+  }
+}

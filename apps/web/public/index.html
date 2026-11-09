@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Devrem</title>
+    <meta http-equiv="refresh" content="0; url=/tr/" />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <script>
+      // Tarayıcı dili Türkçe değilse İngilizce sayfaya yönlendir.
+      var lang = (navigator.language || "tr").toLowerCase();
+      location.replace(lang.indexOf("tr") === 0 ? "/tr/" : "/en/");
+    </script>
+    <style>
+      html {
+        background: #0b0e14;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/tr/">Devrem</a>
+  </body>
+</html>

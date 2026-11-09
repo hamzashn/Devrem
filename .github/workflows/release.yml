@@ -1,0 +1,44 @@
+name: Sürüm
+
+# `v0.2.0` gibi bir etiket gönderildiğinde Windows kurulum paketini derler,
+# güncelleme imzasını atar ve taslak bir GitHub sürümü oluşturur.
+# Ayrıntılar: docs/release.md
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    name: Windows kurulum paketi
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: ./.github/actions/setup-node
+
+      - name: Testler
+        run: cargo test --workspace --exclude devrem-desktop
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Güncelleme imzası (zorunlu): ~/.tauri/devrem.key içeriği
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+          # Windows kod imzalama (isteğe bağlı): sertifika alındığında
+          # docs/release.md'deki adımlarla etkinleştirilir.
+        with:
+          projectPath: apps/desktop
+          tauriScript: pnpm tauri
+          tagName: ${{ github.ref_name }}
+          releaseName: Devrem ${{ github.ref_name }}
+          releaseBody: Değişiklikler için CHANGELOG.md dosyasına bakın.
+          releaseDraft: true
+          prerelease: false
+          includeUpdaterJson: true

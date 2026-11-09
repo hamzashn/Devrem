@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@import "@devrem/ui-tokens/tokens.css";
+
+/* Masaüstü uygulamasıyla aynı token'lar */
+@theme inline {
+  --color-base: var(--bg-base);
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-border: var(--border);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-accent: var(--accent);
+  --color-current: var(--current);
+  --color-vhigh: var(--voltage-high);
+  --color-success: var(--success);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--accent-glow);
+}
+
+/* Şema alanı gibi nokta ızgarası */
+.grid-dots {
+  background-image: radial-gradient(circle, #1f2737 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* Akım noktası animasyonu (devre motifi) */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.current-flow {
+  stroke-dasharray: 0 12;
+  stroke-linecap: round;
+  animation: flow 1.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .current-flow {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Değişiklik günlüğü (Markdown) */
+.prose-devrem h2 {
+  margin-top: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.prose-devrem h3 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.prose-devrem p,
+.prose-devrem li {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.prose-devrem ul {
+  margin-top: 0.5rem;
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.prose-devrem strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.prose-devrem a {
+  color: var(--accent);
+}

@@ -1,0 +1,206 @@
+{
+  "formatVersion": 1,
+  "meta": {
+    "name": "Transistörlü LED Anahtarı",
+    "createdWith": "Devrem 0.1.0"
+  },
+  "components": [
+    {
+      "id": "V1",
+      "kind": "dcVoltage",
+      "pos": [
+        0,
+        0
+      ],
+      "rot": 0,
+      "props": {
+        "voltage": "9"
+      }
+    },
+    {
+      "id": "R1",
+      "kind": "resistor",
+      "pos": [
+        21,
+        -8
+      ],
+      "rot": 1,
+      "props": {
+        "resistance": "470"
+      }
+    },
+    {
+      "id": "LED1",
+      "kind": "led",
+      "pos": [
+        21,
+        -4
+      ],
+      "rot": 1,
+      "props": {
+        "color": "blue"
+      }
+    },
+    {
+      "id": "Q1",
+      "kind": "npn",
+      "pos": [
+        20,
+        2
+      ],
+      "rot": 0,
+      "props": {
+        "beta": "100"
+      }
+    },
+    {
+      "id": "RB",
+      "kind": "resistor",
+      "pos": [
+        14,
+        2
+      ],
+      "rot": 0,
+      "props": {
+        "resistance": "10k"
+      }
+    },
+    {
+      "id": "S1",
+      "kind": "switch",
+      "pos": [
+        8,
+        2
+      ],
+      "rot": 0,
+      "props": {
+        "closed": false
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "ground",
+      "pos": [
+        0,
+        8
+      ],
+      "rot": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "a": [
+        0,
+        -2
+      ],
+      "b": [
+        0,
+        -10
+      ]
+    },
+    {
+      "id": "W2",
+      "a": [
+        0,
+        -10
+      ],
+      "b": [
+        21,
+        -10
+      ]
+    },
+    {
+      "id": "W3",
+      "a": [
+        21,
+        -2
+      ],
+      "b": [
+        21,
+        0
+      ]
+    },
+    {
+      "id": "W4",
+      "a": [
+        16,
+        2
+      ],
+      "b": [
+        18,
+        2
+      ]
+    },
+    {
+      "id": "W5",
+      "a": [
+        10,
+        2
+      ],
+      "b": [
+        12,
+        2
+      ]
+    },
+    {
+      "id": "W6",
+      "a": [
+        6,
+        2
+      ],
+      "b": [
+        6,
+        -10
+      ]
+    },
+    {
+      "id": "W7",
+      "a": [
+        0,
+        2
+      ],
+      "b": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "W8",
+      "a": [
+        0,
+        6
+      ],
+      "b": [
+        21,
+        6
+      ]
+    },
+    {
+      "id": "W9",
+      "a": [
+        21,
+        6
+      ],
+      "b": [
+        21,
+        4
+      ]
+    },
+    {
+      "id": "W10",
+      "a": [
+        0,
+        6
+      ],
+      "b": [
+        0,
+        8
+      ]
+    }
+  ],
+  "simulation": {
+    "timeScale": 1
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "formatVersion": 1,
+  "meta": {
+    "name": "Potansiyometre ile Işık Ayarı",
+    "createdWith": "Devrem 0.1.0"
+  },
+  "components": [
+    {
+      "id": "V1",
+      "kind": "dcVoltage",
+      "pos": [
+        0,
+        0
+      ],
+      "rot": 0,
+      "props": {
+        "voltage": "12"
+      }
+    },
+    {
+      "id": "RV1",
+      "kind": "potentiometer",
+      "pos": [
+        6,
+        -4
+      ],
+      "rot": 0,
+      "props": {
+        "resistance": "500",
+        "position": 20
+      }
+    },
+    {
+      "id": "LP1",
+      "kind": "lamp",
+      "pos": [
+        14,
+        -4
+      ],
+      "rot": 0,
+      "props": {
+        "voltage": "12",
+        "power": "1"
+      }
+    },
+    {
+      "id": "GND1",
+      "kind": "ground",
+      "pos": [
+        0,
+        6
+      ],
+      "rot": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "a": [
+        0,
+        -2
+      ],
+      "b": [
+        0,
+        -4
+      ]
+    },
+    {
+      "id": "W2",
+      "a": [
+        0,
+        -4
+      ],
+      "b": [
+        4,
+        -4
+      ]
+    },
+    {
+      "id": "W3",
+      "a": [
+        6,
+        -6
+      ],
+      "b": [
+        8,
+        -6
+      ]
+    },
+    {
+      "id": "W4",
+      "a": [
+        8,
+        -6
+      ],
+      "b": [
+        8,
+        -4
+      ]
+    },
+    {
+      "id": "W5",
+      "a": [
+        8,
+        -4
+      ],
+      "b": [
+        12,
+        -4
+      ]
+    },
+    {
+      "id": "W6",
+      "a": [
+        16,
+        -4
+      ],
+      "b": [
+        16,
+        4
+      ]
+    },
+    {
+      "id": "W7",
+      "a": [
+        16,
+        4
+      ],
+      "b": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "W8",
+      "a": [
+        0,
+        2
+      ],
+      "b": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "W9",
+      "a": [
+        0,
+        4
+      ],
+      "b": [
+        0,
+        6
+      ]
+    }
+  ],
+  "simulation": {
+    "timeScale": 1
+  }
+}

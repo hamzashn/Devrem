@@ -1,0 +1,10 @@
+{
+  "name": "@devrem/library",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "description": "Devrem bileşen tanımları (pin konumları, varsayılan özellikler). Rust ve arayüz ortak kullanır.",
+  "exports": {
+    "./components.json": "./components.json"
+  }
+}
