@@ -1,0 +1,189 @@
+{
+  "formatVersion": 1,
+  "meta": {
+    "name": "Transformatör (Düşürücü)",
+    "createdWith": "Devrem 0.1.0"
+  },
+  "components": [
+    {
+      "id": "V1",
+      "kind": "acVoltage",
+      "pos": [
+        0,
+        0
+      ],
+      "rot": 0,
+      "props": {
+        "amplitude": "12",
+        "frequency": "50",
+        "offset": "0",
+        "phase": "0"
+      }
+    },
+    {
+      "id": "T1",
+      "kind": "transformer",
+      "pos": [
+        8,
+        0
+      ],
+      "rot": 0,
+      "props": {
+        "primary": "1",
+        "ratio": "0.5",
+        "coupling": "0.999"
+      }
+    },
+    {
+      "id": "R1",
+      "kind": "resistor",
+      "pos": [
+        16,
+        0
+      ],
+      "rot": 1,
+      "props": {
+        "resistance": "100"
+      }
+    },
+    {
+      "id": "VM1",
+      "kind": "voltmeter",
+      "pos": [
+        -5,
+        0
+      ],
+      "rot": 1,
+      "props": {}
+    },
+    {
+      "id": "VM2",
+      "kind": "voltmeter",
+      "pos": [
+        21,
+        0
+      ],
+      "rot": 1,
+      "props": {}
+    },
+    {
+      "id": "GND1",
+      "kind": "ground",
+      "pos": [
+        0,
+        6
+      ],
+      "rot": 0,
+      "props": {}
+    }
+  ],
+  "wires": [
+    {
+      "id": "W1",
+      "a": [
+        0,
+        -2
+      ],
+      "b": [
+        6,
+        -2
+      ]
+    },
+    {
+      "id": "W2",
+      "a": [
+        0,
+        2
+      ],
+      "b": [
+        6,
+        2
+      ]
+    },
+    {
+      "id": "W3",
+      "a": [
+        -5,
+        -2
+      ],
+      "b": [
+        0,
+        -2
+      ]
+    },
+    {
+      "id": "W4",
+      "a": [
+        -5,
+        2
+      ],
+      "b": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "W5",
+      "a": [
+        0,
+        2
+      ],
+      "b": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "W6",
+      "a": [
+        10,
+        -2
+      ],
+      "b": [
+        16,
+        -2
+      ]
+    },
+    {
+      "id": "W7",
+      "a": [
+        16,
+        -2
+      ],
+      "b": [
+        21,
+        -2
+      ]
+    },
+    {
+      "id": "W8",
+      "a": [
+        10,
+        2
+      ],
+      "b": [
+        16,
+        2
+      ]
+    },
+    {
+      "id": "W9",
+      "a": [
+        16,
+        2
+      ],
+      "b": [
+        21,
+        2
+      ]
+    }
+  ],
+  "simulation": {
+    "timeScale": 0.01,
+    "ac": {
+      "start": 1,
+      "stop": 10000,
+      "pointsPerDecade": 20
+    }
+  }
+}

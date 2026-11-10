@@ -49,6 +49,8 @@ pub enum ComponentKind {
     Timer555,
     SevenSegment,
     HexDecoder,
+    Transformer,
+    Optocoupler,
 }
 
 const HORIZONTAL: &[Point] = &[Point(-2, 0), Point(2, 0)];
@@ -113,9 +115,13 @@ const HEX_DECODER: &[Point] = &[
     Point(3, 3),
 ];
 const INPUT_PIN: &[Point] = &[Point(-2, 0)];
+/// Transformatör: birincil (P1, P2), ikincil (S1, S2). Noktalı uçlar P1 ve S1.
+const TRANSFORMER: &[Point] = &[Point(-2, -2), Point(-2, 2), Point(2, -2), Point(2, 2)];
+/// Optokuplör: LED anot, LED katot, fototransistör kollektör, emetör.
+const OPTOCOUPLER: &[Point] = &[Point(-2, -1), Point(-2, 1), Point(2, -1), Point(2, 1)];
 
 impl ComponentKind {
-    pub const ALL: [Self; 39] = [
+    pub const ALL: [Self; 41] = [
         Self::Ground,
         Self::Resistor,
         Self::Capacitor,
@@ -155,6 +161,8 @@ impl ComponentKind {
         Self::Timer555,
         Self::SevenSegment,
         Self::HexDecoder,
+        Self::Transformer,
+        Self::Optocoupler,
     ];
 
     /// Döndürülmemiş haldeki pin konumları (bileşen merkezine göre).
@@ -170,6 +178,8 @@ impl ComponentKind {
             Self::Timer555 => TIMER_555,
             Self::SevenSegment => SEVEN_SEGMENT,
             Self::HexDecoder => HEX_DECODER,
+            Self::Transformer => TRANSFORMER,
+            Self::Optocoupler => OPTOCOUPLER,
             Self::Npn | Self::Nmos => TRANSISTOR_TOP_FIRST,
             Self::Pnp | Self::Pmos => TRANSISTOR_BOTTOM_FIRST,
             Self::OpAmp
@@ -244,6 +254,8 @@ impl ComponentKind {
             Self::Potentiometer => "RV",
             Self::Lamp => "LP",
             Self::SevenSegment => "DS",
+            Self::Transformer => "T",
+            Self::Optocoupler => "OK",
         }
     }
 }

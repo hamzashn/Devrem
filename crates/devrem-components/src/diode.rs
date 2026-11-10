@@ -42,13 +42,18 @@ impl DiodeModel {
             "blue" | "white" => 3.0,
             _ => return None,
         };
+        Some(Self::with_forward_voltage(forward_voltage))
+    }
+
+    /// 10 mA'de verilen ileri yön gerilimine sahip LED benzeri diyot (n = 2).
+    pub fn with_forward_voltage(forward_voltage: f64) -> Self {
         let emission = 2.0;
         let saturation_current = 0.01 / (forward_voltage / (emission * THERMAL_VOLTAGE)).exp();
-        Some(Self {
+        Self {
             saturation_current,
             emission,
             breakdown: None,
-        })
+        }
     }
 
     fn nvt(&self) -> f64 {

@@ -430,5 +430,33 @@
       [3, 3]
     ],
     "props": {}
+  },
+  "transformer": {
+    "prefix": "T",
+    "category": "passive",
+    "pins": [
+      [-2, -2],
+      [-2, 2],
+      [2, -2],
+      [2, 2]
+    ],
+    "props": {
+      "primary": "1",
+      "ratio": "0.1",
+      "coupling": "0.999"
+    }
+  },
+  "optocoupler": {
+    "prefix": "OK",
+    "category": "semiconductors",
+    "pins": [
+      [-2, -1],
+      [-2, 1],
+      [2, -1],
+      [2, 1]
+    ],
+    "props": {
+      "ctr": "100"
+    }
   }
 }

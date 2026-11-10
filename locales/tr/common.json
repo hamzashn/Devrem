@@ -91,7 +91,9 @@
     "pulseVoltage": "Kare Dalga Kaynağı",
     "timer555": "555 Zamanlayıcı",
     "sevenSegment": "7 Segment Gösterge",
-    "hexDecoder": "Hex → 7 Segment Çözücü"
+    "hexDecoder": "Hex → 7 Segment Çözücü",
+    "transformer": "Transformatör",
+    "optocoupler": "Optokuplör"
   },
   "props": {
     "resistance": "Direnç",
@@ -120,7 +122,11 @@
     "power": "Anma gücü",
     "low": "Düşük seviye",
     "duty": "Doluluk oranı",
-    "atB": "B ucuna bağlı"
+    "atB": "B ucuna bağlı",
+    "primary": "Birincil endüktans",
+    "ratio": "Sarım oranı (N2/N1)",
+    "coupling": "Kuplaj katsayısı (k)",
+    "ctr": "Akım aktarım oranı (CTR)"
   },
   "colors": {
     "red": "Kırmızı",
@@ -275,6 +281,14 @@
     "hex-sayac": {
       "title": "Onaltılık Sayıcı",
       "description": "4 bitlik sayıcı, çözücü ve 7 segment gösterge: 0'dan F'ye."
+    },
+    "transformator": {
+      "title": "Transformatör",
+      "description": "2:1 düşürücü; ikincil taraf girişten yalıtılmış. Osiloskopta giriş ve çıkışı karşılaştır."
+    },
+    "optokuplor": {
+      "title": "Optokuplör ile Yalıtım",
+      "description": "Anahtarı kapat: ışık, iki ayrı devre arasında sinyal taşır."
     }
   },
   "crash": {

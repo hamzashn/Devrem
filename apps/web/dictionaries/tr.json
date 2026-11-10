@@ -56,11 +56,11 @@
     "acText": "RC alçak geçiren filtrenin Bode diyagramı: 1 kHz'de −3 dB."
   },
   "components": {
-    "title": "39 bileşen, 12 hazır örnek",
+    "title": "41 bileşen, 14 hazır örnek",
     "groups": [
       {
         "name": "Pasifler",
-        "items": "Direnç, kondansatör, bobin, potansiyometre"
+        "items": "Direnç, kondansatör, bobin, potansiyometre, transformatör"
       },
       {
         "name": "Kaynaklar",
@@ -68,7 +68,7 @@
       },
       {
         "name": "Yarı iletkenler",
-        "items": "Diyot, LED, zener, NPN, PNP, N/P-MOSFET"
+        "items": "Diyot, LED, zener, NPN, PNP, N/P-MOSFET, optokuplör"
       },
       {
         "name": "Entegre",

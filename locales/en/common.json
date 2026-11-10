@@ -91,7 +91,9 @@
     "pulseVoltage": "Pulse Source",
     "timer555": "555 Timer",
     "sevenSegment": "7-Segment Display",
-    "hexDecoder": "Hex → 7-Segment Decoder"
+    "hexDecoder": "Hex → 7-Segment Decoder",
+    "transformer": "Transformer",
+    "optocoupler": "Optocoupler"
   },
   "props": {
     "resistance": "Resistance",
@@ -120,7 +122,11 @@
     "power": "Rated power",
     "low": "Low level",
     "duty": "Duty cycle",
-    "atB": "Connected to B"
+    "atB": "Connected to B",
+    "primary": "Primary inductance",
+    "ratio": "Turns ratio (N2/N1)",
+    "coupling": "Coupling factor (k)",
+    "ctr": "Current transfer ratio (CTR)"
   },
   "colors": {
     "red": "Red",
@@ -275,6 +281,14 @@
     "hex-sayac": {
       "title": "Hex Counter",
       "description": "A 4-bit counter, decoder and 7-segment display: 0 to F."
+    },
+    "transformator": {
+      "title": "Transformer",
+      "description": "2:1 step-down with an isolated secondary. Compare input and output on the scope."
+    },
+    "optokuplor": {
+      "title": "Optocoupler Isolation",
+      "description": "Close the switch: light carries the signal between two separate circuits."
     }
   },
   "crash": {

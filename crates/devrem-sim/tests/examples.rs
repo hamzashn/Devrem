@@ -31,7 +31,7 @@ fn all_examples_simulate() {
         }
         count += 1;
     }
-    assert!(count >= 12, "örnek sayısı: {count}");
+    assert!(count >= 14, "örnek sayısı: {count}");
 }
 
 #[test]
@@ -209,4 +209,35 @@ fn zener_example_regulates() {
     let f = sim.dc_operating_point().unwrap();
     let v = node_v(&topo, &f, "VM1", 0) - node_v(&topo, &f, "VM1", 1);
     assert!((v - 5.1).abs() < 0.08, "{v}");
+}
+
+#[test]
+fn transformer_example_steps_down() {
+    // 12 V tepe, 2:1 → ikincilde ≈ 6 V tepe
+    let doc = load("transformator.dvrm");
+    let mut sim = Simulator::new(&doc).unwrap();
+    let topo = sim.topology();
+    let mut peak: f64 = 0.0;
+    for n in 0..1000 {
+        sim.step(1e-4).unwrap();
+        if n >= 800 {
+            let f = sim.frame();
+            peak = peak.max((node_v(&topo, &f, "VM2", 0) - node_v(&topo, &f, "VM2", 1)).abs());
+        }
+    }
+    assert!((peak - 6.0).abs() < 0.1, "ikincil tepe {peak} V");
+}
+
+#[test]
+fn optocoupler_example_switches_led() {
+    let doc = load("optokuplor.dvrm");
+    let mut sim = Simulator::new(&doc).unwrap();
+    let topo = sim.topology();
+    let led = topo.elements.iter().position(|e| e.id == "LED1").unwrap();
+    let off = sim.dc_operating_point().unwrap().pin_currents[led][0];
+    assert!(off.abs() < 1e-6, "anahtar açıkken çıkış LED'i sönük: {off}");
+    sim.set_toggle("S1", true);
+    let on = sim.dc_operating_point().unwrap().pin_currents[led][0];
+    // (9 V − ~2.1 V LED − ~0.1 V Vce) / 1 kΩ ≈ 6.8 mA
+    assert!((0.006..0.0075).contains(&on), "çıkış LED akımı {on}");
 }

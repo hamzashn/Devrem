@@ -396,6 +396,111 @@ const HEX_DECODER_LEADS: Point[][] = [
 // ---------------------------------------------------------------- Tanımlar
 
 const SYMBOLS: Record<ComponentKind, SymbolDef> = {
+  transformer: {
+    leads: [
+      [
+        [-2, -2],
+        [-0.7, -2],
+        [-0.7, -1.2],
+      ],
+      [
+        [-2, 2],
+        [-0.7, 2],
+        [-0.7, 1.2],
+      ],
+      [
+        [2, -2],
+        [0.7, -2],
+        [0.7, -1.2],
+      ],
+      [
+        [2, 2],
+        [0.7, 2],
+        [0.7, 1.2],
+      ],
+    ],
+    body: (ctx) => {
+      // Birincil sargı (çıkıntılar sağa), ikincil sargı (çıkıntılar sola)
+      ctx.beginPath();
+      for (let i = 0; i < 4; i++) ctx.arc(-0.7, -0.9 + 0.6 * i, 0.3, -Math.PI / 2, Math.PI / 2);
+      ctx.stroke();
+      ctx.beginPath();
+      for (let i = 0; i < 4; i++)
+        ctx.arc(0.7, -0.9 + 0.6 * i, 0.3, -Math.PI / 2, Math.PI / 2, true);
+      ctx.stroke();
+      // Demir çekirdek
+      line(ctx, -0.13, -1.3, -0.13, 1.3);
+      line(ctx, 0.13, -1.3, 0.13, 1.3);
+      // Sargı yönü noktaları (P1 ve S1)
+      for (const x of [-1.15, 1.15]) {
+        ctx.beginPath();
+        ctx.arc(x, -1.15, 0.12, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    },
+  },
+  optocoupler: {
+    leads: [
+      [
+        [-2, -1],
+        [-0.9, -1],
+        [-0.9, -0.35],
+      ],
+      [
+        [-2, 1],
+        [-0.9, 1],
+        [-0.9, 0.3],
+      ],
+      [
+        [2, -1],
+        [1.1, -1],
+        [1.1, -0.7],
+        [0.55, -0.25],
+      ],
+      [
+        [2, 1],
+        [1.1, 1],
+        [1.1, 0.7],
+        [0.55, 0.25],
+      ],
+    ],
+    body: (ctx, _props, style) => {
+      const glow = style.glow ?? 0;
+      const ir = "#f472b6";
+      if (glow > 0.02) {
+        const g = ctx.createRadialGradient(-0.9, 0, 0.1, -0.9, 0, 1.4);
+        g.addColorStop(0, withAlpha(ir, 0.5 * glow));
+        g.addColorStop(1, withAlpha(ir, 0));
+        ctx.fillStyle = g;
+        fillBox(ctx, -1.6, -1.5, 3.2, 3);
+      }
+      // Yalıtım kutusu
+      ctx.save();
+      ctx.lineWidth = LINE * 0.7;
+      ctx.setLineDash([0.25, 0.18]);
+      strokeBox(ctx, -1.6, -1.5, 3.2, 3);
+      ctx.restore();
+      // LED (aşağı bakan)
+      ctx.beginPath();
+      ctx.moveTo(-1.3, -0.35);
+      ctx.lineTo(-0.5, -0.35);
+      ctx.lineTo(-0.9, 0.3);
+      ctx.closePath();
+      ctx.fillStyle = glow > 0.02 ? withAlpha(ir, 0.35 + 0.6 * glow) : "rgba(255,255,255,0.04)";
+      ctx.fill();
+      ctx.stroke();
+      line(ctx, -1.3, 0.3, -0.5, 0.3);
+      // Işık okları
+      ctx.fillStyle = style.stroke;
+      ctx.lineWidth = LINE * 0.8;
+      arrow(ctx, -0.3, -0.2, 0.25, -0.2, 0.18);
+      arrow(ctx, -0.3, 0.2, 0.25, 0.2, 0.18);
+      // Fototransistör
+      ctx.lineWidth = LINE * 2;
+      line(ctx, 0.55, -0.55, 0.55, 0.55);
+      arrowHead(ctx, 0.55, 0.25, 1.0, 0.62, 0.28);
+    },
+  },
   potentiometer: {
     leads: [
       [

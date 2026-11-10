@@ -95,8 +95,8 @@ current flows as moving dots, LEDs glow and the oscilloscope draws the waveforms
     </td>
     <td width="50%" valign="top">
       <h3>🗂️ Example gallery</h3>
-      <img src="docs/images/gallery.png" alt="A gallery of 12 example circuits with previews" />
-      <p>12 ready-made circuits, from an LED to a 555 and a hex counter. Open one and press F5.</p>
+      <img src="docs/images/gallery.png" alt="A gallery of 14 example circuits with previews" />
+      <p>14 ready-made circuits, from an LED to a 555, a transformer and a hex counter. Open one and press F5.</p>
     </td>
   </tr>
 </table>
@@ -288,19 +288,19 @@ If you're stuck, open an [issue](../../issues) with the error message.
 
 ## 🧩 Components
 
-**39 components** in nine categories:
+**41 components** in nine categories:
 
-| Category           | Components                                                         |
-| ------------------ | ------------------------------------------------------------------ |
-| **Passives**       | Resistor · capacitor · inductor · potentiometer                    |
-| **Sources**        | DC voltage · DC current · AC (sine) · pulse · ground               |
-| **Semiconductors** | Diode · LED (5 colors) · zener · NPN · PNP · N-MOSFET · P-MOSFET   |
-| **Integrated**     | Op-amp · 555 timer                                                 |
-| **Switches**       | Switch · push button · SPDT switch                                 |
-| **Logic gates**    | AND · OR · NOT · NAND · NOR · XOR · XNOR · hex → 7-segment decoder |
-| **Sequential**     | D · JK · T flip-flop                                               |
-| **Input / output** | Logic input · logic probe · clock · lamp · 7-segment display       |
-| **Measurement**    | Voltmeter · ammeter                                                |
+| Category           | Components                                                                     |
+| ------------------ | ------------------------------------------------------------------------------ |
+| **Passives**       | Resistor · capacitor · inductor · potentiometer · transformer                  |
+| **Sources**        | DC voltage · DC current · AC (sine) · pulse · ground                           |
+| **Semiconductors** | Diode · LED (5 colors) · zener · NPN · PNP · N-MOSFET · P-MOSFET · optocoupler |
+| **Integrated**     | Op-amp · 555 timer                                                             |
+| **Switches**       | Switch · push button · SPDT switch                                             |
+| **Logic gates**    | AND · OR · NOT · NAND · NOR · XOR · XNOR · hex → 7-segment decoder             |
+| **Sequential**     | D · JK · T flip-flop                                                           |
+| **Input / output** | Logic input · logic probe · clock · lamp · 7-segment display                   |
+| **Measurement**    | Voltmeter · ammeter                                                            |
 
 ## 📊 Analyses
 
@@ -316,20 +316,22 @@ If you're stuck, open an [issue](../../issues) with the error message.
 
 In the [`examples/`](examples/) folder and the in-app gallery:
 
-| Example                                                 | Shows                                 |
-| ------------------------------------------------------- | ------------------------------------- |
-| [LED Circuit](examples/led.dvrm)                        | Current-limiting resistor, ammeter    |
-| [Voltage Divider](examples/gerilim-bolucu.dvrm)         | Dividing a voltage with two resistors |
-| [RC Charging](examples/rc-sarj.dvrm)                    | A capacitor charging in real time     |
-| [AC Blinking LED](examples/ac-led.dvrm)                 | Half-wave of a sine source            |
-| [Light Dimmer](examples/isik-ayari.dvrm)                | Live brightness with a potentiometer  |
-| [Transistor Switch](examples/transistor-anahtar.dvrm)   | Driving an LED with an NPN transistor |
-| [Zener Regulator](examples/zener-regulator.dvrm)        | A steady 5.1 V output                 |
-| [Inverting Amplifier](examples/evirici-yukselteci.dvrm) | Op-amp, gain of −10, oscilloscope     |
-| [RC Low-Pass Filter](examples/rc-alcak-geciren.dvrm)    | AC analysis, Bode plot                |
-| [555 Flasher](examples/555-flasor.dvrm)                 | An astable 555                        |
-| [2-Bit Counter](examples/sayici.dvrm)                   | Binary counting with T flip-flops     |
-| [Hex Counter](examples/hex-sayac.dvrm)                  | Decoder and 7-segment display         |
+| Example                                                 | Shows                                  |
+| ------------------------------------------------------- | -------------------------------------- |
+| [LED Circuit](examples/led.dvrm)                        | Current-limiting resistor, ammeter     |
+| [Voltage Divider](examples/gerilim-bolucu.dvrm)         | Dividing a voltage with two resistors  |
+| [RC Charging](examples/rc-sarj.dvrm)                    | A capacitor charging in real time      |
+| [AC Blinking LED](examples/ac-led.dvrm)                 | Half-wave of a sine source             |
+| [Light Dimmer](examples/isik-ayari.dvrm)                | Live brightness with a potentiometer   |
+| [Transistor Switch](examples/transistor-anahtar.dvrm)   | Driving an LED with an NPN transistor  |
+| [Zener Regulator](examples/zener-regulator.dvrm)        | A steady 5.1 V output                  |
+| [Transformer](examples/transformator.dvrm)              | 2:1 step-down, isolated secondary      |
+| [Optocoupler Isolation](examples/optokuplor.dvrm)       | A signal between two isolated circuits |
+| [Inverting Amplifier](examples/evirici-yukselteci.dvrm) | Op-amp, gain of −10, oscilloscope      |
+| [RC Low-Pass Filter](examples/rc-alcak-geciren.dvrm)    | AC analysis, Bode plot                 |
+| [555 Flasher](examples/555-flasor.dvrm)                 | An astable 555                         |
+| [2-Bit Counter](examples/sayici.dvrm)                   | Binary counting with T flip-flops      |
+| [Hex Counter](examples/hex-sayac.dvrm)                  | Decoder and 7-segment display          |
 
 <details>
 <summary><b>An exported schematic (PNG)</b></summary>

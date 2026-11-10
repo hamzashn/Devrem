@@ -56,11 +56,11 @@
     "acText": "Bode plot of an RC low-pass filter: −3 dB at 1 kHz."
   },
   "components": {
-    "title": "39 components, 12 ready-made examples",
+    "title": "41 components, 14 ready-made examples",
     "groups": [
       {
         "name": "Passives",
-        "items": "Resistor, capacitor, inductor, potentiometer"
+        "items": "Resistor, capacitor, inductor, potentiometer, transformer"
       },
       {
         "name": "Sources",
@@ -68,7 +68,7 @@
       },
       {
         "name": "Semiconductors",
-        "items": "Diode, LED, zener, NPN, PNP, N/P-MOSFET"
+        "items": "Diode, LED, zener, NPN, PNP, N/P-MOSFET, optocoupler"
       },
       {
         "name": "Integrated",

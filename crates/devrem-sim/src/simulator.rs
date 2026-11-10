@@ -13,7 +13,8 @@ use devrem_components::timer::{
     DISCHARGE_RESISTANCE, DIVIDER_RESISTANCE, OUTPUT_RESISTANCE, RESET_PULLUP, pins as tp,
 };
 use devrem_components::{
-    Device, POT_MIN_RESISTANCE, SWITCH_R_OFF, SWITCH_R_ON, Waveform, opamp_output,
+    Device, POT_MIN_RESISTANCE, SWITCH_R_OFF, SWITCH_R_ON, WINDING_RESISTANCE, Waveform,
+    opamp_output,
 };
 use devrem_core::{
     AcSettings, CircuitError, ComponentKind, DcSweepSettings, Document, Netlist, Point,
@@ -146,6 +147,9 @@ pub struct DcSweepResult {
 struct State {
     v: f64,
     i: f64,
+    /// Transformatör ikincil sargısının gerilimi ve akımı.
+    v2: f64,
+    i2: f64,
 }
 
 struct System<T> {
@@ -265,6 +269,7 @@ impl Simulator {
                 | Device::Ammeter
                 | Device::OpAmp { .. }
                 | Device::Timer(_) => 1,
+                Device::Transformer { .. } => 2,
                 Device::Logic(logic) => logic.outputs.len(),
                 _ => 0,
             };
@@ -560,6 +565,62 @@ impl Simulator {
                     stamp_timer_linear(&mut sys, t, k, timer.q, 1.0);
                     sys.rhs(Some(k), if timer.q { timer.level } else { 0.0 });
                 }
+                Device::Transformer {
+                    primary,
+                    secondary,
+                    mutual,
+                } => {
+                    // v1 = L1·di1/dt + M·di2/dt,  v2 = M·di1/dt + L2·di2/dt
+                    let (k1, k2) = (self.branches[e][0], self.branches[e][1]);
+                    sys.branch(t[0], t[1], k1, 1.0);
+                    sys.branch(t[2], t[3], k2, 1.0);
+                    sys.add(Some(k1), Some(k1), -WINDING_RESISTANCE);
+                    sys.add(Some(k2), Some(k2), -WINDING_RESISTANCE);
+                    if let Mode::Transient { h, method } = mode {
+                        let (f, trap) = match method {
+                            Method::BackwardEuler => (1.0 / h, 0.0),
+                            Method::Trapezoidal => (2.0 / h, 1.0),
+                        };
+                        let (l1, l2, m) = (*primary, *secondary, *mutual);
+                        sys.add(Some(k1), Some(k1), -f * l1);
+                        sys.add(Some(k1), Some(k2), -f * m);
+                        sys.add(Some(k2), Some(k1), -f * m);
+                        sys.add(Some(k2), Some(k2), -f * l2);
+                        sys.rhs(
+                            Some(k1),
+                            -f * (l1 * state.i + m * state.i2) - trap * state.v,
+                        );
+                        sys.rhs(
+                            Some(k2),
+                            -f * (m * state.i + l2 * state.i2) - trap * state.v2,
+                        );
+                    }
+                }
+                Device::Optocoupler { model } => {
+                    let (anode, cathode, collector, emitter) = (t[0], t[1], t[2], t[3]);
+                    let vd_new = v(0) - v(1);
+                    let vd = model.led.limit(vd_new, self.junction[e][0]);
+                    limited |= (vd - vd_new).abs() > 1e-9;
+                    let vce_new = v(2) - v(3);
+                    let vce = limit_step(vce_new, self.junction[e][1], 0.5);
+                    limited |= vce != vce_new;
+                    self.junction[e] = [vd, vce];
+                    let (id, gd) = model.led.evaluate(vd);
+                    sys.conductance(anode, cathode, gd + GMIN);
+                    sys.current(anode, cathode, id - gd * vd);
+                    let ph = model.photo(vd, vce);
+                    let i0 = ph.ic - ph.d_vd * vd - ph.d_vce * vce;
+                    let row_c = [
+                        (anode, ph.d_vd),
+                        (cathode, -ph.d_vd),
+                        (collector, ph.d_vce),
+                        (emitter, -ph.d_vce),
+                    ];
+                    let row_e = row_c.map(|(n, g)| (n, -g));
+                    sys.terminal_current(collector, &row_c, i0);
+                    sys.terminal_current(emitter, &row_e, -i0);
+                    sys.conductance(collector, emitter, GMIN);
+                }
             }
         }
 
@@ -771,17 +832,33 @@ impl Simulator {
                             method: Method::Trapezoidal,
                         } => 2.0 * capacitance / h * (vc - prev.v) - prev.i,
                     };
-                    self.states[e] = State { v: vc, i };
+                    self.states[e] = State {
+                        v: vc,
+                        i,
+                        ..State::default()
+                    };
                 }
                 Device::Inductor { .. } => {
                     self.states[e] = State {
                         v: v(0) - v(1),
                         i: self.x[self.branches[e][0]],
+                        ..State::default()
                     };
                 }
                 Device::Diode { .. } => self.accepted_junction[e] = [v(0) - v(1), 0.0],
                 Device::Bjt { .. } => self.accepted_junction[e] = [v(1) - v(2), v(1) - v(0)],
                 Device::Mosfet { .. } => self.accepted_junction[e] = [v(1) - v(2), v(0) - v(2)],
+                Device::Optocoupler { .. } => {
+                    self.accepted_junction[e] = [v(0) - v(1), v(2) - v(3)];
+                }
+                Device::Transformer { .. } => {
+                    self.states[e] = State {
+                        v: v(0) - v(1),
+                        i: self.x[self.branches[e][0]],
+                        v2: v(2) - v(3),
+                        i2: self.x[self.branches[e][1]],
+                    };
+                }
                 _ => {}
             }
         }
@@ -862,6 +939,16 @@ impl Simulator {
                 let g_dis = discharge_conductance(timer.q);
                 path(tp::DIS, tp::GND, g_dis * (v(tp::DIS) - v(tp::GND)));
                 c
+            }
+            Device::Transformer { .. } => {
+                let (i1, i2) = (self.x[self.branches[e][0]], self.x[self.branches[e][1]]);
+                vec![i1, -i1, i2, -i2]
+            }
+            Device::Optocoupler { model } => {
+                let (vd, vce) = (v(0) - v(1), v(2) - v(3));
+                let id = model.led.evaluate(vd).0 + GMIN * vd;
+                let ic = model.photo(vd, vce).ic + GMIN * vce;
+                vec![id, -id, ic, -ic]
             }
         }
     }
@@ -1071,6 +1158,41 @@ impl Simulator {
                 }
                 Device::Timer(timer) => {
                     stamp_timer_linear(&mut sys, t, self.branches[e][0], timer.q, one);
+                }
+                Device::Transformer {
+                    primary,
+                    secondary,
+                    mutual,
+                } => {
+                    let (k1, k2) = (self.branches[e][0], self.branches[e][1]);
+                    let jw = Complex64::new(0.0, omega);
+                    sys.branch(t[0], t[1], k1, one);
+                    sys.branch(t[2], t[3], k2, one);
+                    sys.add(Some(k1), Some(k1), re(-WINDING_RESISTANCE) - jw * *primary);
+                    sys.add(Some(k1), Some(k2), -jw * *mutual);
+                    sys.add(Some(k2), Some(k1), -jw * *mutual);
+                    sys.add(
+                        Some(k2),
+                        Some(k2),
+                        re(-WINDING_RESISTANCE) - jw * *secondary,
+                    );
+                }
+                Device::Optocoupler { model } => {
+                    let (anode, cathode, collector, emitter) = (t[0], t[1], t[2], t[3]);
+                    let (vd, vce) = (v(0) - v(1), v(2) - v(3));
+                    let (_, gd) = model.led.evaluate(vd);
+                    sys.conductance(anode, cathode, re(gd + GMIN));
+                    let ph = model.photo(vd, vce);
+                    let row_c = [
+                        (anode, re(ph.d_vd)),
+                        (cathode, re(-ph.d_vd)),
+                        (collector, re(ph.d_vce)),
+                        (emitter, re(-ph.d_vce)),
+                    ];
+                    let row_e = row_c.map(|(n, g)| (n, -g));
+                    sys.terminal_current(collector, &row_c, Complex64::default());
+                    sys.terminal_current(emitter, &row_e, Complex64::default());
+                    sys.conductance(collector, emitter, re(GMIN));
                 }
             }
         }

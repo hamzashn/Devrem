@@ -70,6 +70,10 @@ export const PROP_META: Record<string, PropMeta> = {
   power: { type: "value", unit: "W" },
   low: { type: "value", unit: "V" },
   duty: { type: "value", unit: "%" },
+  primary: { type: "value", unit: "H" },
+  ratio: { type: "value", unit: "" },
+  coupling: { type: "value", unit: "" },
+  ctr: { type: "value", unit: "%" },
 };
 
 /** Dijital (lojik) bileşenler. */
@@ -176,6 +180,10 @@ function localBounds(kind: ComponentKind): [number, number, number, number] {
       return [-3, -4, 3, 4];
     case "sevenSegment":
       return [-3, -4, 2, 4];
+    case "transformer":
+      return [-2, -2.2, 2, 2.2];
+    case "optocoupler":
+      return [-2, -1.6, 2, 1.6];
     case "voltmeter":
     case "ammeter":
       return [-2, -1.3, 2, 1.3];

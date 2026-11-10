@@ -96,8 +96,8 @@ biçimlerini çizer.
     </td>
     <td width="50%" valign="top">
       <h3>🗂️ Örnek galerisi</h3>
-      <img src="docs/images/gallery.png" alt="12 hazır örnek devrenin önizlemeli galerisi" />
-      <p>12 hazır devre: LED'den 555'e, op-amp'ten onaltılık sayıcıya. Tek tıkla aç, F5'e bas.</p>
+      <img src="docs/images/gallery.png" alt="14 hazır örnek devrenin önizlemeli galerisi" />
+      <p>14 hazır devre: LED'den 555'e, transformatörden onaltılık sayıcıya. Tek tıkla aç, F5'e bas.</p>
     </td>
   </tr>
 </table>
@@ -287,19 +287,19 @@ Sonra yeni kurulum dosyasını çalıştırman yeterli; eski sürümün üzerine
 
 ## 🧩 Bileşenler
 
-**39 bileşen**, dokuz kategoride:
+**41 bileşen**, dokuz kategoride:
 
-| Kategori            | Bileşenler                                                        |
-| ------------------- | ----------------------------------------------------------------- |
-| **Pasifler**        | Direnç · kondansatör · bobin · potansiyometre                     |
-| **Kaynaklar**       | DC gerilim · DC akım · AC (sinüs) · kare dalga · toprak           |
-| **Yarı iletkenler** | Diyot · LED (5 renk) · zener · NPN · PNP · N-MOSFET · P-MOSFET    |
-| **Entegre**         | Op-amp · 555 zamanlayıcı                                          |
-| **Anahtarlar**      | Anahtar · buton · iki yollu (SPDT) anahtar                        |
-| **Lojik kapılar**   | AND · OR · NOT · NAND · NOR · XOR · XNOR · hex → 7 segment çözücü |
-| **Ardışıl lojik**   | D · JK · T flip-flop                                              |
-| **Giriş / çıkış**   | Lojik giriş · lojik prob · saat üreteci · lamba · 7 segment       |
-| **Ölçüm**           | Voltmetre · ampermetre                                            |
+| Kategori            | Bileşenler                                                                  |
+| ------------------- | --------------------------------------------------------------------------- |
+| **Pasifler**        | Direnç · kondansatör · bobin · potansiyometre · transformatör               |
+| **Kaynaklar**       | DC gerilim · DC akım · AC (sinüs) · kare dalga · toprak                     |
+| **Yarı iletkenler** | Diyot · LED (5 renk) · zener · NPN · PNP · N-MOSFET · P-MOSFET · optokuplör |
+| **Entegre**         | Op-amp · 555 zamanlayıcı                                                    |
+| **Anahtarlar**      | Anahtar · buton · iki yollu (SPDT) anahtar                                  |
+| **Lojik kapılar**   | AND · OR · NOT · NAND · NOR · XOR · XNOR · hex → 7 segment çözücü           |
+| **Ardışıl lojik**   | D · JK · T flip-flop                                                        |
+| **Giriş / çıkış**   | Lojik giriş · lojik prob · saat üreteci · lamba · 7 segment                 |
+| **Ölçüm**           | Voltmetre · ampermetre                                                      |
 
 ## 📊 Analizler
 
@@ -324,6 +324,8 @@ Sonra yeni kurulum dosyasını çalıştırman yeterli; eski sürümün üzerine
 | [Işık Ayarı](examples/isik-ayari.dvrm)                    | Potansiyometreyle canlı parlaklık    |
 | [Transistörlü Anahtar](examples/transistor-anahtar.dvrm)  | NPN transistörle LED sürme           |
 | [Zener Regülatörü](examples/zener-regulator.dvrm)         | 5,1 V'ta sabit çıkış                 |
+| [Transformatör](examples/transformator.dvrm)              | 2:1 düşürücü, yalıtılmış ikincil     |
+| [Optokuplör ile Yalıtım](examples/optokuplor.dvrm)        | Yalıtılmış iki devre arasında sinyal |
 | [Eviren Yükselteç](examples/evirici-yukselteci.dvrm)      | Op-amp, −10 kazanç, osiloskop        |
 | [RC Alçak Geçiren Filtre](examples/rc-alcak-geciren.dvrm) | AC analizi, Bode diyagramı           |
 | [555 Flaşör](examples/555-flasor.dvrm)                    | Kararsız (astable) 555               |

@@ -276,6 +276,49 @@ pub fn to_spice(doc: &Document) -> Result<String, CircuitError> {
                 num(*gain),
                 num(*vsat)
             ),
+            Device::Transformer {
+                primary,
+                secondary,
+                mutual,
+            } => {
+                let name = element_name('L', id);
+                let k = mutual / (primary * secondary).sqrt();
+                format!(
+                    "{name}P {} {} {}
+{name}S {} {} {}
+K{id} {name}P {name}S {} ; transformatör",
+                    n[0],
+                    n[1],
+                    num(*primary),
+                    n[2],
+                    n[3],
+                    num(*secondary),
+                    num(k)
+                )
+            }
+            Device::Optocoupler { model } => {
+                let sense = format!("V{id}_LED");
+                let mid = format!("N_{id}");
+                models.insert(
+                    "DOPTO_IR".into(),
+                    format!(
+                        "D(IS={} N={})",
+                        num(model.led.saturation_current),
+                        num(model.led.emission)
+                    ),
+                );
+                format!(
+                    "{sense} {} {mid} DC 0 ; optokuplör LED akımı
+{} {mid} {} DOPTO_IR
+F{id} {} {} {sense} {} ; fototransistör (doyma SPICE'ta modellenmedi)",
+                    n[0],
+                    element_name('D', id),
+                    n[1],
+                    n[2],
+                    n[3],
+                    num(model.ctr)
+                )
+            }
             Device::Logic(_) | Device::Timer(_) => {
                 let kind = serde_json::to_value(component.kind)
                     .ok()

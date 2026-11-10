@@ -202,6 +202,15 @@ function valueLabel(c: CircuitComponent): { text: string; ok: boolean } | null {
     }
     case "zener":
       return single("breakdown");
+    case "transformer": {
+      const n = parseValue(String(c.props.ratio ?? ""));
+      if (n === null || n <= 0) return { text: "?", ok: false };
+      // 0.1 → 10:1 (düşürücü), 2 → 1:2 (yükseltici)
+      const round = (x: number) => Number(x.toPrecision(3));
+      return { text: n < 1 ? `${round(1 / n)}:1` : `1:${round(n)}`, ok: true };
+    }
+    case "optocoupler":
+      return single("ctr");
     case "lamp": {
       const v = fmt("voltage");
       const p = fmt("power");
@@ -303,6 +312,11 @@ export function drawScene(ctx: CanvasRenderingContext2D, s: SceneInput) {
     );
     let glow = 0;
     let level: boolean | null = null;
+    if (live && c.kind === "optocoupler") {
+      const i = sim.elementIndex.get(c.id);
+      const current = i === undefined ? 0 : (frame.pinCurrents[i]?.[0] ?? 0);
+      glow = Math.max(0, Math.min(1, current / 0.015));
+    }
     if (live && c.kind === "led") {
       const i = sim.elementIndex.get(c.id);
       const current = i === undefined ? 0 : (frame.pinCurrents[i]?.[0] ?? 0);

@@ -7,6 +7,7 @@ pub mod bjt;
 pub mod diode;
 pub mod logic;
 pub mod mosfet;
+pub mod optocoupler;
 pub mod timer;
 pub mod waveform;
 
@@ -14,6 +15,7 @@ pub use bjt::{BjtEval, BjtModel};
 pub use diode::DiodeModel;
 pub use logic::{LogicDevice, LogicKind};
 pub use mosfet::{MosfetEval, MosfetModel};
+pub use optocoupler::{OptocouplerModel, PhotoEval};
 pub use timer::Timer555;
 pub use waveform::Waveform;
 
@@ -81,7 +83,25 @@ pub enum Device {
     },
     /// Pin sırası için bkz. [`timer::pins`].
     Timer(Timer555),
+    /// Kuplajlı iki bobin. Pin sırası: P1, P2 (birincil), S1, S2 (ikincil);
+    /// noktalı uçlar P1 ve S1.
+    Transformer {
+        /// Birincil endüktans L1 (H).
+        primary: f64,
+        /// İkincil endüktans L2 = L1 · n² (H).
+        secondary: f64,
+        /// Karşılıklı endüktans M = k · √(L1 · L2) (H).
+        mutual: f64,
+    },
+    /// Pin sırası: LED anot, LED katot, kollektör, emetör.
+    Optocoupler {
+        model: OptocouplerModel,
+    },
 }
+
+/// Transformatör sargılarının iç direnci (Ω). Gerçek sargılar gibi DC'de
+/// tam kısa devre olmamalarını sağlar (kaynak doğrudan bağlanabilir).
+pub const WINDING_RESISTANCE: f64 = 1e-3;
 
 /// Potansiyometre uçlarının en küçük direnci (Ω); sıfır dirence düşmesin.
 pub const POT_MIN_RESISTANCE: f64 = 1e-3;
@@ -176,6 +196,28 @@ impl Device {
             ComponentKind::HexDecoder => {
                 Self::Logic(LogicDevice::new(LogicKind::HexDecoder, false))
             }
+            ComponentKind::Transformer => {
+                let primary = p.positive("primary", "1")?;
+                let ratio = p.positive("ratio", "0.1")?;
+                let coupling = p.positive("coupling", "0.999")?;
+                // k = 1 endüktans matrisini tekil yapar; ideal transformatör
+                // için 0.9999'a kadar izin verilir.
+                if coupling > 0.9999 {
+                    return Err(CircuitError::OutOfRange {
+                        component: c.id.clone(),
+                        prop: "coupling".into(),
+                    });
+                }
+                let secondary = primary * ratio * ratio;
+                Self::Transformer {
+                    primary,
+                    secondary,
+                    mutual: coupling * (primary * secondary).sqrt(),
+                }
+            }
+            ComponentKind::Optocoupler => Self::Optocoupler {
+                model: OptocouplerModel::new(p.positive("ctr", "100")? / 100.0),
+            },
             ComponentKind::Npn | ComponentKind::Pnp => {
                 let polarity = if c.kind == ComponentKind::Npn {
                     1.0
@@ -242,6 +284,7 @@ impl Device {
                 | Self::Mosfet { .. }
                 | Self::OpAmp { .. }
                 | Self::Timer(_)
+                | Self::Optocoupler { .. }
         )
     }
 }

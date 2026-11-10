@@ -40,7 +40,9 @@ export type ComponentKind =
   | "pulseVoltage"
   | "timer555"
   | "sevenSegment"
-  | "hexDecoder";
+  | "hexDecoder"
+  | "transformer"
+  | "optocoupler";
 
 export type PropValue = string | number | boolean;
 

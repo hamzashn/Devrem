@@ -103,6 +103,8 @@ Her cihaz `G·x = b` sistemine kendi katkısını ekler.
 | Anahtar, buton     | 1 mΩ / 1 TΩ direnç                                                           |
 | Lojik çıkış        | 20 Ω iç dirençli 0 / 5 V kaynak                                              |
 | 555                | İç 5k–10k bölücü, iki karşılaştırıcı, SR mandal, çıkış katı, deşarj anahtarı |
+| Transformatör      | Kuplajlı iki bobin: L2 = L1·n², M = k·√(L1·L2); sargı başına 1 mΩ iç direnç  |
+| Optokuplör         | Kızılötesi LED + fototransistör: Ic = CTR · I_LED · tanh(Vce / 0,2 V)        |
 
 ### 3. Çözüm
 
